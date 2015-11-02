@@ -53,39 +53,39 @@ class CockpitObj(BaseObj):
 
 class ShipObj(BaseObj):
     TEMPLATE = (
-        'H|Body file',
-        'H|Picture ID',
-        'E|Yaw',
-        'E|Pitch',
-        'E|Roll',
-        'D|Class',
-        'D|Description',
-        'E|Speed',
-        'E|Acceleration',
-        'H|Engine sound',
-        'E|Average reaction delay',
-        'H|Engine effect',
-        'H|Engine glow effect',
-        'E|Reactor output',
-        'H|Sound volume min',
-        'H|Sound volume max',
-        'D|Ship scene',
-        'D|Cockpit scene',
-        'H|Possible lasers',
-        'H|Gun count',
-        'E|Weapons energy',
-        'E|Weapons recharge',
-        'E|Shield type',
-        'E|Shield count',
-        'E|Possible missiles',
-        'E|Number of missiles',
-        'E|Engine tunings',
-        'E|Rudder tunings',
-        'E|Cargo min',
-        'E|Cargo max',
-        'E|Predefined Wares',
+        'Body file',
+        'Picture ID',
+        'Yaw',
+        'Pitch',
+        'Roll',
+        'Class',
+        'Description',
+        'Speed',
+        'Acceleration',
+        'Engine sound',
+        'Average reaction delay',
+        'Engine effect',
+        'Engine glow effect',
+        'Reactor output',
+        'Sound volume min',
+        'Sound volume max',
+        'Ship scene',
+        'Cockpit scene',
+        'Possible lasers',
+        'Gun count',
+        'Weapons energy',
+        'Weapons recharge',
+        'Shield type',
+        'Shield count',
+        'Possible missiles',
+        'Number of missiles',
+        'Engine tunings',
+        'Rudder tunings',
+        'Cargo min',
+        'Cargo max',
+        'Predefined Wares',
         dict(
-            field='H|Cockpit Definitions',
+            field='Cockpit Definitions',
             type='list-count-value',
             count=6,
             fields=(
@@ -93,19 +93,19 @@ class ShipObj(BaseObj):
                 'Cockpit position'
             )
         ),
-        'E|Docking slots',
-        'E|Cargo type',
-        'D|Race',
-        'E|Hull strength',
-        'H|Explosion definition',
-        'H|Body explosion definition',
-        'H|Engine Trail',
-        'E|Variation index',
-        'E|Max Rotation Acceleration',
-        'D|Class Description',
-        'H|Cockpit Count',
+        'Docking slots',
+        'Cargo type',
+        'Race',
+        'Hull strength',
+        'Explosion definition',
+        'Body explosion definition',
+        'Engine Trail',
+        'Variation index',
+        'Max Rotation Acceleration',
+        'Class Description',
+        'Cockpit Count',
         dict(
-            field='H|Cockpits',
+            field='Cockpits',
             type='list-count-field',
             count_field='Cockpit Count',
             fields=(
@@ -115,9 +115,9 @@ class ShipObj(BaseObj):
                 'Path index'
             )
         ),
-        'H|Gun Group Count',
+        'Gun Group Count',
         dict(
-            field='H|Gun Groups',
+            field='Gun Groups',
             type='list-count-field',
             count_field='Gun Group Count',
             fields=(
@@ -140,26 +140,30 @@ class ShipObj(BaseObj):
                 )
             )
         ),
-        'H|Volume',
-        'D|Production RelVal (NPC)',
-        'D|Price modifier',
-        'D|Price modifier 2',
-        'H|Ware class',
-        'H|Production RelVal (player)',
-        'H|Min. Notoriety',
-        'H|Video ID',
-        'H|Unknown value',
-        'D|ID'
+        'Volume',
+        'Production RelVal (NPC)',
+        'Price modifier',
+        'Price modifier 2',
+        'Ware class',
+        'Production RelVal (player)',
+        'Min. Notoriety',
+        'Video ID',
+        'Unknown value',
+        'ID'
     )
 
     def clean(self, cockpits, pages):
         o = self
         self.id=o.data['_id']=o.data['id']
 
-        o.data.set_item('playable', not bool(nonplayable.findall(self.id)), 'Playable')
+#        o.data.set_item('playable', not bool(nonplayable.findall(self.id)), 'Playable')
+        o.data['playable'] = not bool(nonplayable.findall(self.id))
+        
         page_t=o.data['description']
-        o.data.set_item('name', pages.get_page(17, page_t), 'Name')
-        o.data.set_item('desc', pages.get_page(17, page_t+1), 'Description')
+#        o.data.set_item('name', pages.get_page(17, page_t), 'Name')
+        o.data['name'] = pages.get_page(17, page_t)
+#        o.data.set_item('desc', pages.get_page(17, page_t+1), 'Description')
+        o.data['desc'] = pages.get_page(17, page_t+1)
 
         stype = [o.data['class'].split('_')[2]]
         if stype==['TS'] and self.id.endswith('_TSP'):
@@ -176,13 +180,14 @@ class ShipObj(BaseObj):
         elif stype==['M2'] and self.id.endswith('_M2P'):
             stype.append('M2+')
 
-        o.data.set_item('type', stype, 'Type')
+        #o.data.set_item('type', stype, 'Type')
+        o.data['type'] = stype
 
         speed = o.data['speed']
         accel = o.data['acceleration']
         turn = max(o.data['pitch'], o.data['yaw'])
-        etunes = o.data['engine_tunnings']
-        rtunes = o.data['rudder_tunnings']
+        etunes = o.data['engine_tunings']
+        rtunes = o.data['rudder_tunings']
 
         o.data['info'] = OrderedDict(
             speed=OrderedDict(min=round(speed/500, 1), max=round(speed*(1.0+0.1*etunes)/500, 1), tunes=etunes),
@@ -260,7 +265,7 @@ if __name__=='__main__':
     filename = 'ap/addon/types/tships.pck'
     ships = ShipObj.parse_file(filename, cockpits=cockpits, pages=pages)
 
-    if 0:  # write to db
+    if 1:  # write to db
         import pymongo
         mongo=pymongo.MongoClient()
         db=mongo.x3

@@ -93,7 +93,6 @@ if __name__ == '__main__':
             continue
         bullets.append(BulletObj(data))
 
-
     print "Getting lasers"
     lines=open('ap/addon/types/tlaser.pck').readlines()[2:]
     lasers = []
@@ -111,11 +110,13 @@ if __name__ == '__main__':
     mongo=pymongo.MongoClient()
     db=mongo.x3
 
+    db.bullets.drop()
     for id, o in enumerate(bullets):
             o.data['_id']=o.data['line']=id
             db.bullets.save(o.data)
 
-    page_id = 35
+    page_id = 17
+    db.lasers.drop()
     for id, o in enumerate(lasers):
         o.data['_id']=o.data['line']=id
 

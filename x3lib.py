@@ -96,89 +96,16 @@ GUN_POSITIONS = {
     6: 'Bottom'
 }
 
+RACE = {
+    1: ['argon', 'core'], 2: ['boron', 'core'], 3: ['split', 'core'], 4: ['paranid', 'core'], 5: ['teladi', 'core'],
+    6: ['xenon'], 7: ['kha\'ak'], 8: ['pirates'], 9: ['goner'],
+    11: ['enemy'], 12: ['neutral'], 13: ['friendly'], 14: ['unknown'],
+    17: ['terran', 'atf'], 18: ['terran', 'usc'], 19: ['yaki']
+}
+
 ########################################################################################################################
 
-
-class OrderedDict(dict):
-    def __init__(self, **kwargs):
-        self.__dict__['_fields'] = []
-        self.__dict__['_values'] = {}
-        super(OrderedDict, self).__init__()
-        for k, v in kwargs.items():
-            self.set_item(k, v)
-
-    def __setitem__(self, k, v):
-        #print 'setitem', k, v
-        self.set_item(k, v)
-
-    def __getitem__(self, k):
-        #print 'getitem', k
-        return self._values[k]['value']
-
-    def __delitem__(self, k):
-        self._fields.remove[k]
-        self._values.pop(k)
-
-    def set_item(self, k, v, l=None):
-        #print 'set_item', k, v, l
-        if isinstance(k, (str, unicode)) and '|' in k: k=k.split('|', 1)[1]
-        if k not in self._values:
-            if l and '|' in l:
-                dt, l = l.split('|', 1)
-            else:
-                dt, l = 'D', l or k.title() if isinstance(k, (str, unicode)) else k
-            self._fields.append(k)
-            self._values[k] = dict(value=v, label=l, display=dt)
-        else:
-            self._values[k]['value'] = v
-
-    def __setattr__(self, k, v):
-        #print 'set_attr', k, v
-        if k.startswith(('_', 'set_item', 'keys', 'labels', 'values', 'items', 'pop')):
-            super(OrderedDict, self).__setattr__(k, v)
-        else:
-            self.set_item(k, v)
-
-    def __getattr__(self, k):
-        #print 'get_attr', k
-        if k.startswith(('_', 'set_item', 'keys', 'labels', 'values', 'items', 'pop')):
-            return super(OrderedDict, self).__getattr__(k)
-        else:
-            return self._values[k]['value']
-
-    def __len__(self):
-        return len(self._fields)
-
-    def __iter__(self):
-        for f in self._fields:
-            yield f
-
-    def pop(self, k, *args, **kwargs):
-        try:
-            v = self._values.pop(k, *args, **kwargs)
-        except Exception, e:
-            print 'ERROR %s: k=%s, fields=%r' % (e, k, self._fields)
-            raise
-        self._fields.remove(k)
-        return v
-
-    def labels(self, include_keys=False):
-        if include_keys:
-            return [(k, self._values[k]['label']) for k in self._fields]
-        else:
-            return [k for k in self._fields]
-
-    def keys(self):
-        return self._fields
-
-    def values(self):
-        return [self._values[k] for k in self._fields]
-
-    def items(self, include_labels=False):
-        if include_labels:
-            return [(k, self._values[k]) for k in self._fields]
-        else:
-            return [(k, self._values[k]['value']) for k in self._fields]
+from collections import OrderedDict
 
 
 class BaseObj(object):
@@ -190,7 +117,7 @@ class BaseObj(object):
     def parse_file(cls, filename, **kwargs):
         objects = []
         with open(filename, 'r') as openfile:
-            filedata = openfile.read()
+            filedata = openfile.read().rstrip('\n\r ;')
             data =  cls.TFILE_PATTERN.subn('', filedata.strip())[0].translate(None, '\n\r').split(';')
         version = data.pop(0)
         length = data.pop(0)
@@ -219,6 +146,7 @@ class BaseObj(object):
         self.offset = 0
         self._data = data
         self.line = line_nr
+        self.fieldmap = OrderedDict()
         self.data = self.parse(self.TEMPLATE)
         self.data['line'] = self.line
         self.clean(**kwargs)
@@ -226,7 +154,6 @@ class BaseObj(object):
     def parse(self, template, depth=0):
         data = OrderedDict()
         for f in template:
-            print '1>', f
             if isinstance(f, dict):
                 if f['type'] == 'list-count-value':
                     count = f['count']
@@ -236,7 +163,7 @@ class BaseObj(object):
                         count = int(data[count_field])
                     except Exception, e:
                         print '(119) Error %s\ncount field: %s\ndata:' % (e, count_field)
-                        print data
+                        print '------------\n{}\n---------'.format(data)
                         raise
                 else:
                     raise Exception('unknown struct type: %r' % (f))
@@ -245,12 +172,16 @@ class BaseObj(object):
                 grp_res = []
                 for i in xrange(count):
                     grp_res.append(self.parse(f['fields'], depth+1))
-                data.set_item(cf, grp_res, f['field'])
+                #data.set_item(cf, grp_res, f['field'])
+                data[cf] = grp_res
+                self.fieldmap[cf] = f['field']
 
             elif isinstance(f, str):
                 cf = self.cfield(f)
                 value = self._data.pop(0).strip()
-                data.set_item(cf, self.cvalue(value), f)
+                #data.set_item(cf, self.cvalue(value), f)
+                data[cf] = self.cvalue(value)
+                self.fieldmap[cf] = f
 
             else:
                 raise Exception('unknown field type: %r' % (f))
@@ -381,11 +312,12 @@ class Pages(object):
 
 class Lookups(object):
     def get_lookups(self):
-        entries=OrderedDict()
+        entries={}
         try:
             xmldoc = minidom.parse('ap/addon/director/dirobjdb.xsd')
-        except:
-            return OrderedDict()
+        except Exception as e:
+            print 'get_lookups error: {}'.format(e)
+            return {}
         for entry in xmldoc.getElementsByTagName('xs:enumeration'):
             id = entry.attributes['value'].value.strip()
             name = entry.getElementsByTagName('xs:documentation')[0].childNodes[0].data.strip()

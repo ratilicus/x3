@@ -13,13 +13,6 @@ ASTEROID_TYPE = {0: 'ore', 1: 'silicon', 2: 'nividium', 3: 'ice'}
 
 GATE_DIR = {0: 'north', 1: 'south', 2: 'west', 3: 'east'}
 
-RACE = {
-    1: ['argon', 'core'], 2: ['boron', 'core'], 3: ['split', 'core'], 4: ['paranid', 'core'], 5: ['teladi', 'core'],
-    6: ['xenon'], 7: ['kha\'ak'], 8: ['pirates'], 9: ['goner'],
-    11: ['enemy'], 12: ['neutral'], 13: ['friendly'], 14: ['unknown'],
-    17: ['terran', 'atf'], 18: ['terran', 'usc'], 19: ['yaki']
-}
-
 
 ########################################################################################################################
 
