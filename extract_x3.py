@@ -20,8 +20,10 @@ except:
     exit(1)
 
 class cat(object):
-    def __init__(self, catfilename):
+    def __init__(self, catfilename, outpath, db=None):
         self.catfilename = catfilename
+        self.outpath = outpath
+        self.db = db
         with open(catfilename, "rb") as inputfile:
             data = inputfile.read()
         lines = self.cat_decrypt(data).splitlines()
@@ -68,17 +70,16 @@ class cat(object):
             return None
         return self.read_dat(*self.entries[filename])
 
-    def copyall(self, path):
+    def copyall(self):
         for e, v in sorted(self.entries.items()):
-            self.copyfile(e, path)
+            self.copyfile(e)
 
-    def copyfile(self, filename, path):
+    def copyfile(self, filename):
         data = self.read_file(filename)
         if not data:
             sys.stderr.write("Could not file %s\n" % filename)
             return
 
-        filename = filename.lower()
         if filename.endswith(('.pck', '.pbd', '.pbb')):
             rdata=None
             for v in range(255):
@@ -88,8 +89,14 @@ class cat(object):
                 except:
                     continue
 
-        outfile = '{}/{}'.format(path, filename.lower())
-        print '{:30} {} -> {}'.format(self.catfilename, filename, outfile)
+        outfile = '{}/{}'.format(self.outpath, filename.lower())
+        if self.db:
+            self.db.files.insert({
+                'cat': self.catfilename,
+                'filename': filename,
+                'outfile': outfile
+            })
+        print '{:30} > {}'.format(self.catfilename, outfile)
         try:        
             os.makedirs(os.path.dirname(outfile))
         except:
@@ -98,22 +105,37 @@ class cat(object):
             outputfile.write(data)
 
 if __name__=='__main__':
+    import pymongo
+    mongo=pymongo.MongoClient()
+    db=mongo.x3
+
     args = sys.argv[1:]
     if not args:
         print("%s <cat file name | --all>" % sys.argv[0])
     elif args[0] == '--all':
+        db.files.drop()
         catpath = config.TC
         tccats = sorted(f for f in os.listdir(catpath) if f.endswith('.cat'))
         for f in tccats:
-            c = cat('{}/{}'.format(catpath, f))
-            c.copyall('{}/tc'.format(config.PWD))
+            c = cat(
+                catfilename='{}/{}'.format(catpath, f),
+                outpath='{}/tc'.format(config.PWD),
+                db=db
+            )
+            c.copyall()
 
         catpath = '{}/addon'.format(config.TC)
         apcats = sorted(f for f in os.listdir(catpath) if f.endswith('.cat'))   
         for f in apcats:
-            c = cat('{}/{}'.format(catpath, f))
-            c.copyall('{}/ap'.format(config.PWD))
+            c = cat(
+                catfilename='{}/{}'.format(catpath, f),
+                outpath='{}/ap'.format(config.PWD),
+                db=db
+            )
+            c.copyall()
     else:
-        c = cat(args[0])
-        path = ('{}/ap' if 'addon' in args[0] else '{}/tc').format(config.PWD)
-        c.copyall(path)
+        c = cat(
+            args[0],
+            outpath=('{}/ap' if 'addon' in args[0] else '{}/tc').format(config.PWD)
+        )
+        c.copyall()

@@ -278,5 +278,5 @@ if __name__=='__main__':
             if len(shipyards):
                 o.data['shipyards'] = shipyards
     #        print 'adding %3d %s' % (i, o.id)
-            db.ships.save(o.data, safe=True)
+            db.ships.save(o.data)
     #    ships[0].pprint()
