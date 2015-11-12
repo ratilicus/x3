@@ -89,7 +89,7 @@ class cat(object):
                 except:
                     continue
 
-        outfile = '{}/{}'.format(self.outpath, filename.lower())
+        outfile = '{}/{}'.format(self.outpath, filename)
         if self.db:
             self.db.files.insert({
                 'cat': self.catfilename,
