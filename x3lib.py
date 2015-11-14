@@ -1,5 +1,7 @@
 from xml.dom import minidom
 import re
+import os
+import struct
 
 CARGO_SIZE = (
     '',

@@ -1,4 +1,9 @@
-from base import Model, IntField, FloatField, StringField, ListField
+import re
+from base import Model, IntField, FloatField, StringField, ListField, CalcField, calc_field
+
+
+nonplayable = re.compile('ASTRON|PLACEHOLDER|DRONE|ROBOT|SAT|SPACEFLY|TAXI|BIGCIV|TROOPTRAINER|SEC_TRANSPORT|DUMMY|UFO|TURRET|LASER|OWP|HIVEGUARD|THINKER|BEACON|WP|MINE|TL_P|LIFEFORM|MOD_TL')
+
 
 class CockpitDefinition(Model):
     index = IntField('Cockpit index')
@@ -17,6 +22,7 @@ class Cockpit(Model):
     def __repr__(self):
         return '<{}>({})'.format(self.__class__.__name__, self.index)
 
+
 class Gun(Model):
     index = IntField('Index')
     count = IntField('Count')
@@ -28,6 +34,7 @@ class Gun(Model):
     def __repr__(self):
         return '<{}>({})'.format(self.__class__.__name__, self.index)
 
+
 class GunGroup(Model):
     initial_index = IntField('Initial laser index')
     gun_count = IntField('No of guns')
@@ -37,6 +44,7 @@ class GunGroup(Model):
 
     def __repr__(self):
         return '<{}>({})'.format(self.__class__.__name__, self.index)
+
 
 class TShips(Model):
     body_file = StringField('Body file')
@@ -96,11 +104,28 @@ class TShips(Model):
     unknown = StringField('Unknown value')
     id = StringField('ID')
 
+    turn_min = CalcField('Turn Rate (min)', lambda model: model.yaw*60.0)
+    turn_max = CalcField('Turn Rate (max)', lambda model: model.yaw*60.0*(1+0.1*model.rudder_tunings))
+    speed_min = CalcField('Speed m/s (min)', lambda model: model.speed/500.0)
+    speed_max = CalcField('Speed m/s (max)', lambda model: model.speed/500.0*(1+0.1*model.engine_tunings))
+
+    @calc_field('Playable')
+    def playable(model):
+        return not bool(nonplayable.search(model.id))
+
+    @calc_field('Name')
+    def name(model):
+        return 'N/A'
+
+    @calc_field('Name')
+    def desc(model):
+        return  'N/A'
+
+
     def __repr__(self):
         return '<{}>({})'.format(self.__class__.__name__, self.id)
 
 
-import re
 from collections import OrderedDict
 TFILE_PATTERN = re.compile(r'\/\/.*|\/\*.*?\*\/')
 
@@ -114,15 +139,35 @@ def parse_file(filename):
     return version, length, data
 
 
-if __name__ == '__main__':
+def dump_ships():
+    import json
     v, l, data = parse_file('ap/addon/types/tships.pck')
 
     print len(data)
     ships = OrderedDict()
     while data:
-        ship = TShips(data)
+        ship = TShips.serialize(data)
         ships[ship.id] = ship
         print '{:30} {:20} {}'.format(ship.id, ship.ship_class, ship.speed)
+
+    ship_data = [ship.dump() for ship in ships.values()]
+    with open('/dev/shm/ships.json', 'w') as of:
+        of.write(json.dumps(ship_data))
+
     print len(data)
     
+def load_ships():
+    import json
 
+    ships_data = json.loads(open('/dev/shm/ships.json', 'r').read())
+    ships = OrderedDict()
+    for data in ships_data:
+        ship = TShips.load(data)
+        ships[ship.id] = ship
+        if ship.playable:
+            print '{:30} {:20} turn: {:4.1f} - {:4.1f}    spd: {:5.0f} - {:.0f}'.format(ship.id, ship.name, ship.turn_min, ship.turn_max, ship.speed_min, ship.speed_max)
+    
+
+if __name__ == '__main__':
+    #dump_ships()
+    load_ships()

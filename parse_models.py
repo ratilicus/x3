@@ -39,6 +39,7 @@ class lod(object):
         self.mats = mats
         self.verts = verts
         self.faces = faces
+
     def save_obj(self, fn):
         v_lines = []
         vn_lines = []
@@ -119,7 +120,17 @@ class lod(object):
         s+= ' | SQR SIZE: %d (%0.1fm)' % (65536.0/5*self.scale, 65536.0/5*self.scale/500.0)
         draw.text((3,303), s, fill=(0,0,0))
 
+        try:
+            os.makedirs(os.path.dirname(fn))
+        except:
+            pass
+
         img.save(fn, "GIF")
+        return (
+            round(extents[0][2]*self.scale/500.0, 1),
+            round(extents[1][2]*self.scale/500.0, 1),
+            round(extents[2][2]*self.scale/500.0, 1)
+        )
 
 
 class Material(object):
@@ -195,58 +206,58 @@ def load_mat5(s, m, flags):
     m.light_map = load_tex_pair(s, m.version)
 
 
-def get_lods(fdata, max_lod=16, load_mesh=True):
+def get_lods(fdata, max_lod=16, load_mesh=True, load_mats=False):
     info = (fdata[fdata.index('INFO', 0) + 4: fdata.index('/INF', 0)])
     #print 'INFO', info
-
-    mat_start = fdata.index('MAT', 0)
-    mat_end = fdata.index('/MAT', mat_start)
-    data = Stream(fdata[mat_start: mat_end])
-    mat_str = data.read(4)
-    if mat_str == 'MAT5' or mat_str == 'MAT6':
-        mat_ct = data.readInt()
-        print 'MAT>', mat_str, mat_ct
-        for i in xrange(mat_ct):
-            m = Material()
-            m.version = 5 if (mat_str == 'MAT5') else 6
-            if m.version==5:
-                load_mat5(data, m, 0)
-            else:
-                # load mat6
-                m.index = data.readShort()
-                m.flags = data.readInt()
-                if m.flags & 0x2000000:
-                    # big Mat
-                    m.big = Material()
-                    m.big.technique = data.readShort()
-                    m.big.shader_name = data.readStr()
-                    m.big.values = []
-                    value_ct = data.readShort()
-                    for c in xrange(value_ct):
-                        v = Material.Value()
-                        v.name = data.readStr()
-                        v_type = data.readShort()
-                        if v_type == 0:
-                            v.value = data.readInt()
-                        elif v_type == 1:
-                            v.value = data.readInt() != 0
-                        elif v_type == 8:
-                            v.value = data.readStr()
-                        elif v_type == 2:
-                            v.value = data.readFloat()
-                        elif 3<=v_type<=5:
-                            v.value = tuple(data.readFloat() for i in xrange(v_type-1))
-                        m.big.values.append(v)
+    if load_mats:
+        mat_start = fdata.index('MAT', 0)
+        mat_end = fdata.index('/MAT', mat_start)
+        data = Stream(fdata[mat_start: mat_end])
+        mat_str = data.read(4)
+        if mat_str == 'MAT5' or mat_str == 'MAT6':
+            mat_ct = data.readInt()
+            print 'MAT>', mat_str, mat_ct
+            for i in xrange(mat_ct):
+                m = Material()
+                m.version = 5 if (mat_str == 'MAT5') else 6
+                if m.version==5:
+                    load_mat5(data, m, 0)
                 else:
-                    # Small Mat
-                    s.skip(-2)
-                    m.small = Material()
-                    load_mat5(data, m.small, m.flags)
-            #print m.p()
-            mats.append(m)
-    else:
+                    # load mat6
+                    m.index = data.readShort()
+                    m.flags = data.readInt()
+                    if m.flags & 0x2000000:
+                        # big Mat
+                        m.big = Material()
+                        m.big.technique = data.readShort()
+                        m.big.shader_name = data.readStr()
+                        m.big.values = []
+                        value_ct = data.readShort()
+                        for c in xrange(value_ct):
+                            v = Material.Value()
+                            v.name = data.readStr()
+                            v_type = data.readShort()
+                            if v_type == 0:
+                                v.value = data.readInt()
+                            elif v_type == 1:
+                                v.value = data.readInt() != 0
+                            elif v_type == 8:
+                                v.value = data.readStr()
+                            elif v_type == 2:
+                                v.value = data.readFloat()
+                            elif 3<=v_type<=5:
+                                v.value = tuple(data.readFloat() for i in xrange(v_type-1))
+                            m.big.values.append(v)
+                    else:
+                        # Small Mat
+                        s.skip(-2)
+                        m.small = Material()
+                        load_mat5(data, m.small, m.flags)
+                #print m.p()
+                mats.append(m)
+        else:
 #            print 'INVALID MAT TYPE>', mat_str
-        pass
+            pass
 
     body_index = fdata.index('BODY')+4
     data = Stream(fdata[body_index: body_index+4])
@@ -352,11 +363,27 @@ def gen_obj():
             raise
 
 
-def gen_thumb(check_exists=True):
+def gen_thumb(check_exists=True, scenes=None, db=None):
     model_files = walk_files('.pbb')
     model_file_count = len(model_files)
     for i, (p, fn) in enumerate(model_files, start=1):
         pfn = '%s/%s' % (p,fn)
+
+        dbship = None
+        if scenes and db:
+            scene0 = pfn[11:-4].lower()
+            scene = scene0[:-6] if scene0.endswith('_scene') else scene0
+
+            id = scenes.get(scene, '')
+            if id:
+                dbship = db.ships.find_one({'_id': id})
+
+#            if 'ships' in scene and not dbship:
+#                print '{:50} | {:50}'.format(scene0, scene)
+
+        if not dbship or 'size' in dbship:
+            continue
+
         f, e =fn.rsplit('.', 1)
         t = 'ships' if 'ships' in p else 'stations'
         fno = ('thumb/%s/%s.gif' % (t, f)).lower()
@@ -369,14 +396,18 @@ def gen_thumb(check_exists=True):
         try:
             with open(pfn) as f:
                 lods = get_lods(f.read(), max_lod=1)
-            lods[0].thumb(fno)
+            xt = lods[0].thumb(fno)
+            if xt and dbship:
+                dbship['size'] = size = dict(w=xt[0], h=xt[1], l=xt[2])
+                db.ships.save(dbship)
+                print '\tsetting size: {} to {}\n'.format(id, size)
 
         except Exception, e:
             print 'Error processing %s\n%s' % (pfn, e)
 
 
-def get_info():
-    model_files = walk_files('.pbb')[:1]
+def get_info(scenes):
+    model_files = walk_files('.pbb')
     model_file_count = len(model_files)
     ships = []
     for i, (p, fn) in enumerate(model_files, start=1):
@@ -386,19 +417,38 @@ def get_info():
         try:
             with open(pfn) as f:
                 lods = get_lods(f.read(), max_lod=1, load_mesh=False)
-            ships.append((lods[0].scale, fn))
+
+            scene = pfn[11:-4].lower()
+            scene = scene[:-6] if scene.endswith('_scene') else scene
+            id = scenes.get(scene, '')
+            ships.append((65536.0*lods[0].scale/500.0*2, scene, id))
         except Exception, e:
-            print 'Error processing %s\n%s' % (pfn, e)
-            raise
-    for s, f in sorted(ships, reverse=True):
-        print '%0.5f %s' % (s, f)
+            pass
+#            print '\tError processing %s\n%s\n' % (pfn, e)
+            
+#            raise
+    for s, f, id in sorted(ships, reverse=True):
+        print '%9.0fm | %-60s | %s' % (s, f, id)
     print len(ships)
 
+
+def get_ship_scenes(db):
+    def get_scene(scene):
+        scene1 = scene.replace('\\', '/').lower()
+        scene2 = scene1[:-6] if scene1.endswith('_scene') else scene1
+#        print '{:50} | {:50}'.format(scene, scene2)
+        return scene2
+    return {get_scene(s['ship_scene']): s['_id']
+            for s in db.ships.find({},{'ship_scene':1}) if isinstance(s['ship_scene'], (str, unicode))}
 
 ########################################################################################################################
 
 
 if __name__=='__main__':
-    #get_info()
-    gen_thumb(False)
+    from pymongo import MongoClient
+    db = MongoClient().x3
+
+    scenes = get_ship_scenes(db)
+#    get_info(scenes, db)
+    gen_thumb(False, scenes=scenes, db=db)
     #gen_obj()
