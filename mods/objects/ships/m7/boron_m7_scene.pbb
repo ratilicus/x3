@@ -1,0 +1,110 @@
+/===============================================================
+/ 3D Scene Information file C:\Users\Bobby\Desktop\Next Update\objects\ships\M7\Boron_M7_scene.BOD
+/ Automatically generated from D:\Max Scenes\[CURRENT]\PROCESSED\XTM Assets\M7\Boron\Boron-M7_Scene.max
+/===============================================================
+/ EGOSOFT Bodyfile exporter version 3.53 [Jul 31 2007 12:17:29]
+VER: 3;
+/ >> Mon Jun 16 13:43:00 2008
+
+/ Thresher : Turret/camera angles and positions corrected by Gazz 07.12.08
+/ 500 units / m
+
+/ Animation time interval: 0..16000
+/ >> Mon Jun 16 13:43:00 2008
+ / Staring Biped Key Reading/ >> Mon Jun 16 13:43:00 2008
+ / finished Biped Key Reading
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\M7\Boron_M7_1a Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 0; B ships\M7\Boron_M7; C 1; N Bships\M7\Boron_M7_1a; b
+  { 0x2002;  0; 0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  0; 0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+P 1; B ships\props\cameradummy; C 1; N Bships\props\cameradummy_1br; b
+  { 0x2002;  0; -3833; 87666;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+P 2; B ships\props\cameradummy; C 3; N Bships\props\cameradummy_3r; b
+  { 0x2002;  16333; 7333; 23000;  0.250000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+P 3; B ships\props\cameradummy; C 5; N Bships\props\cameradummy_5l; b
+  { 0x2002;  -16333; 7333; 23000;  0.250000; 0.000000; -1.000000; 0.000000;  -1;  -1; } // -1
+
+P 4; B ships\props\cameradummy; C 4; N Bships\props\cameradummy_4r; b
+  { 0x2002;  0; -12833; -68333;  0.500000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+
+P 5; B ships\props\cameradummy; C 6; N Bships\props\cameradummy_6t; b
+  { 0x2002;  0; 17333; 13333;  0.250000; -1.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+P 6; B ships\props\cameradummy; C 7; N Bships\props\cameradummy_7b; b
+  { 0x2002;  0; -27000; 40000;  0.250000; 1.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+P 7; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-01; b
+  { 0x2002;  -23502; -4296; 27270;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -23502; -4296; 27270;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\props\invisible_weapon_1-02 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 8; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-02; b
+  { 0x2002;  23502; -4296; 27270;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  23502; -4296; 27270;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\props\invisible_weapon_1-03 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 9; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-03; b
+  { 0x2002;  -28716; -3862; 16060;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -28716; -3862; 16060;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\props\invisible_weapon_1-04 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 10; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-04; b
+  { 0x2002;  28716; -3862; 16060;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  28716; -3862; 16060;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\props\invisible_weapon_1-05 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 11; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-05; b
+  { 0x2002;  -33991; -3600; 7378;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -33991; -3600; 7378;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\props\invisible_weapon_1-06 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 12; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-06; b
+  { 0x2002;  33991; -3600; 7378;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  33991; -3600; 7378;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\props\invisible_weapon_1-07 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 13; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-07; b
+  { 0x2002;  -39901; -3600; -2469;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -39901; -3600; -2469;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\props\invisible_weapon_1-08 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 14; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-08; b
+  { 0x2002;  39901; -3600; -2469;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  39901; -3600; -2469;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\props\invisible_weapon_1-09 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 15; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-09; b
+  { 0x2002;  -45279; -3600; -11345;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -45279; -3600; -11345;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Mon Jun 16 13:43:00 2008
+/     Node Bships\props\invisible_weapon_1-10 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 16; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-10; b
+  { 0x2002;  45279; -3600; -11345;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  45279; -3600; -11345;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+/ Turret : Rear
+P 17; B ships\props\bigturret_dummy; C 4; N Bships\props\bigturret_dummy_4ra; b
+  { 0x2002;  -28666; -4666; -52000;  0.500000; 0.984112; 0.177550; 0.000000;  -1;  -1; } // -1
+P 18; B ships\props\bigturret_dummy; C 4; N Bships\props\bigturret_dummy_4rb; b
+  { 0x2002;  28666; -4666; -52000;  0.500000; 0.986200; -0.165558; 0.000000;  -1;  -1; } // -1
+
+/ Turret : Right
+P 19; B ships\props\bigturret2_dummy; C 3; N Bships\props\bigturret2_dummy_3r; b
+  { 0x2002;  11833; 2833; 19333;  0.250; 0.000; 1.000; 0.000;  -1;  -1; } // -1
+/ Turret : Left
+P 20; B ships\props\bigturret2_dummy; C 5; N Bships\props\bigturret2_dummy_5l; b
+  { 0x2002;  -11833; 2833; 19333;  0.250; 0.000; -1.000; 0.000;  -1;  -1; } // -1
+
+/ Turret : Bottom
+P 21; B ships\props\bigturret2_dummy; C 7; N Bships\props\bigturret2_dummy_7b; b
+  { 0x2002;  0; -21500; 22000;  0.250; 1.000; 0.000; 0.000;  -1;  -1; } // -1
+/ Turret : Top
+P 22; B ships\props\bigturret2_dummy; C 6; N Bships\props\bigturret2_dummy_6t; b
+  { 0x2002;  0; 12433; 6633;  0.250; -1.000; 0.000; 0.000;  -1;  -1; } // -1
+
+
+P 23; B 19103; C 1; N B19103_01; b
+{ 0x2002;  0; -100000; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; }

@@ -1,0 +1,51 @@
+/===============================================================
+/ 3D Scene Information file C:\Documents and Settings\Bobby\Desktop\Next Update\objects\ships\Pirate\Pirate_M7_scene.bod
+/ Automatically generated from D:\Max Scenes\[CURRENT]\Pirate\PIRATE_M7_scene.max
+/===============================================================
+/ EGOSOFT Bodyfile exporter version 3.53 [Jul 31 2007 12:17:29]
+VER: 3;
+
+/ Carrack: Turret angles corrected by Gazz 05.12.08
+
+P 0; B ships\Pirate\Pirate_M7; C 1; N Bships\Pirate\Pirate_M7_1a; b
+  { 0x2002;  0; 0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+/ Camera : Cockpit (reduced at 316000)
+P 1; B ships\props\cameradummy; C 1; N Bships\props\cameradummy_1-bridge; b
+  { 0x2002;  0; 7500; 105000;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 2; B ships\props\cameradummy; C 4; N Bships\props\cameradummy_4-rear; b
+  { 0x2002;  0; 15275; -109500;  0.500000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+P 3; B ships\props\cameradummy; C 7; N Bships\props\cameradummy_7-bottom; b
+  { 0x2002;  0; -32219; 21500;  0.250000; 1.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 4; B ships\props\cameradummy; C 3; N Bships\props\cameradummy_3-left; b
+  { 0x2002;  -14350; 17500; 16000;  0.250; 0.000; -0.985; 0.000;  -1;  -1; } // -1
+P 5; B ships\props\cameradummy; C 5; N Bships\props\cameradummy_5-right; b
+  { 0x2002;  14250; 17500; 16000;  0.250; 0.000; 0.985; 0.000;  -1;  -1; } // -1
+P 6; B ships\props\bigturret4_dummy; C 5; N Bships\props\bigturret4_dummy_5-01; b
+  { 0x2002;  4900; 8800; 19000;  0.250; 0.000; 0.985; 0.000;  -1;  -1; } // -1
+P 7; B ships\props\bigturret4_dummy; C 5; N Bships\props\bigturret4_dummy_5-03; b
+  { 0x2002;  4900; 8800; -5500;  0.250; 0.000; 0.985; 0.000;  -1;  -1; } // -1
+P 8; B ships\props\bigturret4_dummy; C 3; N Bships\props\bigturret4_dummy_3-01; b
+  { 0x2002;  -4500; 9000; 31000;  0.250; 0.000; -0.985; 0.000;  -1;  -1; } // -1
+P 9; B ships\props\bigturret4_dummy; C 3; N Bships\props\bigturret4_dummy_3-03; b
+  { 0x2002;  -4500; 9000; 5500;  0.250; 0.000; -0.985; 0.000;  -1;  -1; } // -1
+P 10; B ships\props\bigturret4_dummy; C 4; N Bships\props\bigturret4_dummy_4-01; b
+  { 0x2002;  0; 5000; -100000;  0.500000; -0.000370; 1.000000; 0.000000;  -1;  -1; } // -1
+P 11; B ships\props\bigturret5_dummy; C 7; N Bships\props\bigturret5_dummy_7bottom; b
+  { 0x2002;  0; -25000; -2500;  0.250; 1.000; 0.000; 0.000;  -1;  -1; } // -1
+P 12; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-01; b
+  { 0x2002;  4500; -10000; 94000;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 13; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-02; b
+  { 0x2002;  -4500; -5000; 94000;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 14; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-03; b
+  { 0x2002;  0; -2500; 94000;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 15; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-04; b
+  { 0x2002;  4200; -5000; 94000;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 16; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-05; b
+  { 0x2002;  -4400; -10000; 94000;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 17; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-06; b
+  { 0x2002;  0; -12500; 94000;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+
+P 18; B 19103; C 1; N B19103_01; b
+{ 0x2002;  0; -100000; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; }

@@ -1,0 +1,206 @@
+<?xml version="1.0" standalone="yes" ?>
+<?xml-stylesheet href="x2script.xsl" type="text/xsl" ?>
+<script>
+<name>adam.addShipToShipyard</name>
+<version>0</version>
+<engineversion>53</engineversion>
+<description>add ship to shipyard</description>
+<arguments>
+<argument index="1" name="ship" type="Var/Ship Type" desc="ship" />
+<argument index="2" name="station" type="Var/Station" desc="station" />
+</arguments>
+<sourceplaintext>
+<![CDATA[
+  skip if $ship
+    return null
+  skip if $station -> exists
+    return null
+  write to player logbook 'got to 5'
+  skip if $station -> is of class Shipyard
+    return null
+  if $station -> uses ware $ship as product
+    return null
+  end
+  write to player logbook 'got to 11'
+  $station ->add product to factory or dock: $ship
+  $c = $station -> get amount of ware $ship in cargo bay
+  write to player logbook 'got to 13'
+  write to player logbook $c
+  skip if $c > 0
+    = $station -> add 1 units of $ship
+  return null
+]]>
+</sourceplaintext>
+<sourcetext>
+<line indent=""><var>skip&#160;if&#160;</var><var>$ship</var></line>
+<line indent="&#160;"><text>return&#160;</text><var>null</var></line>
+<line indent=""><var>skip&#160;if&#160;</var><var>$station&#160;-&gt;</var><text>&#160;exists</text></line>
+<line indent="&#160;"><text>return&#160;</text><var>null</var></line>
+<line indent=""><text>write&#160;to&#160;player&#160;logbook&#160;</text><var>'got&#160;to&#160;5'</var></line>
+<line indent=""><var>skip&#160;if&#160;</var><var>$station&#160;-&gt;</var><text>&#160;is&#160;of&#160;class&#160;</text><var>Shipyard</var></line>
+<line indent="&#160;"><text>return&#160;</text><var>null</var></line>
+<line indent=""><var>if&#160;</var><var>$station&#160;-&gt;</var><text>&#160;uses&#160;ware&#160;</text><var>$ship</var><text>&#160;as&#160;product</text></line>
+<line indent="&#160;"><text>return&#160;</text><var>null</var></line>
+<line indent=""><text>end</text></line>
+<line indent=""><text>write&#160;to&#160;player&#160;logbook&#160;</text><var>'got&#160;to&#160;11'</var></line>
+<line indent=""><var>$station&#160;-&gt;</var><text>add&#160;product&#160;to&#160;factory&#160;or&#160;dock:&#160;</text><var>$ship</var></line>
+<line indent=""><var>$c&#160;=&#160;</var><var>$station&#160;-&gt;</var><text>&#160;get&#160;amount&#160;of&#160;ware&#160;</text><var>$ship</var><text>&#160;in&#160;cargo&#160;bay</text></line>
+<line indent=""><text>write&#160;to&#160;player&#160;logbook&#160;</text><var>'got&#160;to&#160;13'</var></line>
+<line indent=""><text>write&#160;to&#160;player&#160;logbook&#160;</text><var>$c</var></line>
+<line indent=""><var>skip&#160;if&#160;</var><var>$c</var><text>&#160;</text><var>&gt;</var><text>&#160;</text><var>0</var></line>
+<line indent="&#160;"><var>=&#160;</var><var>$station&#160;-&gt;</var><text>&#160;add&#160;</text><var>1</var><text>&#160;units&#160;of&#160;</text><var>$ship</var></line>
+<line indent=""><text>return&#160;</text><var>null</var></line>
+</sourcetext>
+<codearray>
+
+<sval type="array" size="10">
+  <sval type="string" val="adam.addShipToShipyard"/>
+  <sval type="int" val="53"/>
+  <sval type="string" val="add ship to shipyard"/>
+  <sval type="int" val="0"/>
+  <sval type="int" val="0"/>
+  <sval type="array" size="3">
+    <sval type="string" val="ship"/>
+    <sval type="string" val="station"/>
+    <sval type="string" val="c"/>
+  </sval>
+  <sval type="array" size="17">
+    <sval type="array" size="7">
+      <sval type="int" val="104"/>
+      <sval type="int" val="-536870393"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="-1"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="103"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="706"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="-536869881"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="103"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="400"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="got to 5"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="705"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="-536869113"/>
+      <sval type="int" val="12"/>
+      <sval type="int" val="2037"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="103"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="1165"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="-1610610429"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="103"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="400"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="got to 11"/>
+    </sval>
+    <sval type="array" size="5">
+      <sval type="int" val="750"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="618"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="2"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="400"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="got to 13"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="400"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="2"/>
+    </sval>
+    <sval type="array" size="13">
+      <sval type="int" val="104"/>
+      <sval type="int" val="-536866809"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="2"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="15"/>
+      <sval type="int" val="2"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="-1"/>
+      <sval type="int" val="2"/>
+      <sval type="int" val="-2"/>
+    </sval>
+    <sval type="array" size="8">
+      <sval type="int" val="646"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="-2147483647"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="103"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+  </sval>
+  <sval type="array" size="2">
+    <sval type="array" size="2">
+      <sval type="int" val="19"/>
+      <sval type="string" val="ship"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="12"/>
+      <sval type="string" val="station"/>
+    </sval>
+  </sval>
+  <sval type="array" size="1">
+    <sval type="array" size="2">
+      <sval type="int" val="9"/>
+      <sval type="int" val="4"/>
+    </sval>
+  </sval>
+  <sval type="int" val="0"/>
+</sval>
+
+</codearray>
+<nosignature>3601</nosignature>
+</script>

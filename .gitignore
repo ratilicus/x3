@@ -1,6 +1,8 @@
 *.pyc
 config.py
+bk/
 tc/
 ap/
+thumb/
 x3tc
 *.pck

@@ -1,0 +1,74 @@
+/===============================================================
+/ 3D Scene Information file C:\Documents and Settings\Bobby\Desktop\Next Update\objects\ships\M7\Split_M7_scene.bod
+/ Automatically generated from D:\Max Scenes\[CURRENT]\XTM Assets\M7\Split\Split-M7_Scene.max
+/===============================================================
+/ EGOSOFT Bodyfile exporter version 3.53 [Jul 31 2007 12:17:29]
+VER: 3;
+/ >> Fri May 16 17:43:10 2008
+
+/ Tiger: Turrets redone by Gazz 11.12.08
+
+P 0; B ships\M7\Split_M7; C 1; N Bships\M7\Split_M7_1a; b
+  { 0x2002;  0; 0; 0;  0.000; 0.000; 0.000; 0.000;  3333;  1; } // 1
+  { 0x2002;  0; 0; 0;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+P 1; B ships\props\cameradummy; C 1; N Bships\props\cameradummy_1br; b
+  { 0x2002;  0; 12750; 93000;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+
+/right left
+P 2; B ships\props\cameradummy; C 3; N Bships\props\cameradummy_3ri; b
+  { 0x2002;  26250; 500; 110000;  0.250; 0.000; 0.940; 0.000;  -1;  -1; } // -1
+P 3; B ships\props\cameradummy; C 5; N Bships\props\cameradummy_5l; b
+  { 0x2002;  -26250; 500; 110000;  0.250; 0.000; -0.940; 0.000;  -1;  -1; } // -1
+
+P 4; B ships\props\cameradummy; C 4; N Bships\props\cameradummy_4r; b
+  { 0x2002;  0; -10783; -211880;  0.500000; 0.000; 1.000; 0.000;  -1;  -1; } // -1
+
+P 5; B ships\props\cameradummy; C 6; N Bships\props\cameradummy_6t; b
+  { 0x2002;  0; 17500; -57000;  0.236; -1.000; 0.000; 0.000;  -1;  -1; } // -1
+P 6; B ships\props\cameradummy; C 7; N Bships\props\cameradummy_7b; b
+  { 0x2002;  0; -16000; -25750;  0.250; 1.000; 0.000; 0.000;  -1;  -1; } // -1
+
+P 7; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-01; b
+  { 0x2002;  -13900; -5209; 135190;  0.000; 0.000; 0.000; 0.000;  3333;  1; } // 1
+  { 0x2002;  -13900; -5209; 135190;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+P 8; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-02; b
+  { 0x2002;  13900; -5209; 135190;  0.000; 0.000; 0.000; 0.000;  3333;  1; } // 1
+  { 0x2002;  13900; -5209; 135190;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+P 9; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-03; b
+  { 0x2002;  -2596; -5209; 187647;  0.000; 0.000; 0.000; 0.000;  3333;  1; } // 1
+  { 0x2002;  -2596; -5209; 187647;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+P 10; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-04; b
+  { 0x2002;  2596; -5209; 187647;  0.000; 0.000; 0.000; 0.000;  3333;  1; } // 1
+  { 0x2002;  2596; -5209; 187647;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+P 11; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-05; b
+  { 0x2002;  -1974; -8297; 148522;  0.000; 0.000; 0.000; 0.000;  3333;  1; } // 1
+  { 0x2002;  -1974; -8297; 148522;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+P 12; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-06; b
+  { 0x2002;  1974; -8297; 148522;  0.000; 0.000; 0.000; 0.000;  3333;  1; } // 1
+  { 0x2002;  1974; -8297; 148522;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+P 13; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-07; b
+  { 0x2002;  -11297; -4650; 135190;  0.000; 0.000; 0.000; 0.000;  3333;  1; } // 1
+  { 0x2002;  -11297; -4650; 135190;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+P 14; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-08; b
+  { 0x2002;  11297; -4650; 135190;  0.000; 0.000; 0.000; 0.000;  3333;  1; } // 1
+  { 0x2002;  11297; -4650; 135190;  0.000; 0.000; 0.000; 0.000;  -1;  -1; } // -1
+
+P 15; B ships\props\bigturret_dummy; C 4; N Bships\props\bigturret_dummy_4ra; b
+  { 0x2002;  61; -17034; -188657;  0.500000; 0.999998; 0.001818; 0.000;  -1;  -1; } // -1
+
+/right left
+P 16; B ships\props\bigturret2_dummy; C 3; N Bships\props\bigturret2_dummy_3r; b
+  { 0x2002;  13500; -4500; 129250;  0.250; 0.000; 0.940; 0.000;  -1;  -1; } // -1
+P 17; B ships\props\bigturret2_dummy; C 5; N Bships\props\bigturret2_dummy_5l; b
+  { 0x2002;  -13500; -4500; 129250;  0.250; 0.000; -0.940; 0.000;  -1;  -1; } // -1
+
+/bottom
+P 18; B ships\props\bigturret2_dummy; C 7; N Bships\props\bigturret2_dummy_7b; b
+  { 0x2002;  0; -12438; -35744;  0.250; 1.000; 0.000; 0.000;  -1;  -1; } // -1
+/top
+P 19; B ships\props\bigturret2_dummy; C 6; N Bships\props\bigturret2_dummy_6t; b
+  { 0x2002;  0; 14000; -42250;  0.236; -1.000; 0.000; 0.000;  -1;  -1; } // -1
+
+
+P 20; B 19103; C 1; N B19103_01; b
+{ 0x2002;  0; -100000; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; }

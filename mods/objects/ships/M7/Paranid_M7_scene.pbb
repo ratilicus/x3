@@ -1,0 +1,112 @@
+/===============================================================
+/ 3D Scene Information file C:\Documents and Settings\Bobby\Desktop\Next Update\objects\ships\M7\Paranid_M7_scene.bod
+/ Automatically generated from D:\Max Scenes\[CURRENT]\XTM Assets\M7\Paranid\Paranid_M7_scene.max
+/===============================================================
+/ EGOSOFT Bodyfile exporter version 3.53 [Jul 31 2007 12:17:29]
+VER: 3;
+/ >> Fri May 16 18:05:35 2008
+
+/ Deimos : Turrets redone by Gazz 07.12.08
+
+P 0; B ships\props\cameradummy; C 1; N Bships\props\cameradummy_1br; b
+  { 0x2002;  0; 500; 121000;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+									  
+/right
+P 1; B ships\props\cameradummy; C 3; N Bships\props\cameradummy_3r; b
+  { 0x2002;  46000; -6000; -3000;  0.250; 0.000; 1.000; 0.000;  -1;  -1; } // -1
+/left
+P 2; B ships\props\cameradummy; C 5; N Bships\props\cameradummy_5l; b
+  { 0x2002;  -46000; -6000; -3000;  0.250; 0.000; -1.000; 0.000;  -1;  -1; } // -1
+
+/rear
+P 3; B ships\props\cameradummy; C 4; N Bships\props\cameradummy_4r; b
+  { 0x2002;  0; -15457; -108396;  0.500000; 0.000000; 1.000000; -0.000000;  -1;  -1; } // -1
+/bottom
+P 4; B ships\props\cameradummy; C 6; N Bships\props\cameradummy_6t; b
+  { 0x2002;  0; -30000; 78500;  0.250; 1.000; 0.000; 0.000;  -1;  -1; } // -1
+/top
+P 5; B ships\props\cameradummy; C 7; N Bships\props\cameradummy_7b; b
+  { 0x2002;  0; 15000; 22500;  0.250; -1.000; 0.000; 0.000;  -1;  -1; } // -1
+
+P 6; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-01; b
+  { 0x2002;  -5043; 5318; 118803;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -5043; 5318; 118803;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node Bships\props\invisible_weapon_1-02 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 7; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-02; b
+  { 0x2002;  5033; 5318; 118803;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  5033; 5318; 118803;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node Bships\props\invisible_weapon_1-03 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 8; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-03; b
+  { 0x2002;  -11832; 4053; 118502;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -11832; 4053; 118502;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node Bships\props\invisible_weapon_1-04 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 9; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-04; b
+  { 0x2002;  11821; 4053; 118502;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  11821; 4053; 118502;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node Bships\props\invisible_weapon_1-05 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 10; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-05; b
+  { 0x2002;  -15767; -16829; 114666;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -15767; -16829; 114666;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node Bships\props\invisible_weapon_1-06 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 11; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-06; b
+  { 0x2002;  15756; -16829; 114666;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  15756; -16829; 114666;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node Bships\props\invisible_weapon_1-07 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 12; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-07; b
+  { 0x2002;  -11660; -16859; 116993;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -11660; -16859; 116993;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node Bships\props\invisible_weapon_1-08 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 13; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-08; b
+  { 0x2002;  11649; -16859; 116993;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  11649; -16859; 116993;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+/rear
+P 14; B ships\props\bigturret_dummy; C 4; N Bships\props\bigturret_dummy_4ra; b
+  { 0x2002;  41; -20366; -98253;  0.500; 1.000; 0.000; 0.000;  -1;  -1; } // -1
+/right
+P 15; B ships\props\bigturret2_dummy; C 3; N Bships\props\bigturret2_dummy_3r; b
+  { 0x2002;  42000; -8250; 9500;  0.250; 0.000; 1.000; 0.000;  -1;  -1; } // -1
+/left
+P 16; B ships\props\bigturret2_dummy; C 5; N Bships\props\bigturret2_dummy_5l; b
+  { 0x2002;  -42000; -8250; 9500;  0.250; 0.000; -1.000; 0.000;  -1;  -1; } // -1
+/bottom
+P 17; B ships\props\bigturret2_dummy; C 7; N Bships\props\bigturret2_dummy_7b; b
+  { 0x2002;  0; -27250; 73500;  0.250; 1.000; 0.000; 0.000;  -1;  -1; } // -1
+/top
+P 18; B ships\props\bigturret2_dummy; C 6; N Bships\props\bigturret2_dummy_6t; b
+  { 0x2002;  0; 12500; 27500;  0.250; -1.000; 0.000; 0.000;  -1;  -1; } // -1
+
+P 19; B 19027; N B19027a; b
+  { 0x2002;  -157; -22497; 38648;  0.000290; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node B19026_1 Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 20; B 19026; C 1; N B19026_1; b
+  { 0x2002;  37977; -10772; 40452;  0.244930; -0.000000; -1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node B19026_2 Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 21; B 19026; C 2; N B19026_2; b
+  { 0x2002;  35893; -10761; 52630;  0.254990; -0.000000; -1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node B19026_3 Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 22; B 19026; C 3; N B19026_3; b
+  { 0x2002;  -38192; -10806; 39813;  0.264596; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node B19026_4 Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 23; B 19026; C 4; N B19026_4; b
+  { 0x2002;  -36359; -10709; 52635;  0.264596; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri May 16 18:05:35 2008
+/     Node Bships\M7\Paranid_M7_1a Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 24; B ships\M7\Paranid_M7; C 1; N Bships\M7\Paranid_M7_1a; b
+  { 0x2002;  0; 0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  0; 0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+
+P 25; B 19103; C 1; N B19103_01; b
+{ 0x2002;  0; -100000; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; }

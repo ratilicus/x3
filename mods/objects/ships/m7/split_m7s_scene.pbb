@@ -1,0 +1,112 @@
+/# Exported with dbox2 at 1/24/2006 11:46:54 AM
+
+VER: 6;
+
+/ Panther : Turret angles corrected by Gazz 11.12.08
+ 
+P 0; B ships\m7\split_m7s; N Bships\m7\split_m7s; b  // idx 0
+{ 0x2002;  0; 0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+//DOCKS
+
+P 1; B 19027; N B19027a; b  // idx 22
+{ 0x2002;  -536; -48127; -17507;  0.001348; 0.000000; -1.000000; 0.000000;  -1; 1; } // 0
+
+P 2; B 19026; C 1; N B19026_01; b  // idx 27
+{ 0x2002;  17641; -8348; 83575;  0.337786; 0.523968; -0.582559; 0.621356;  -1; 1; } // 0
+
+P 3; B 19026; C 2; N B19026_02; b  // idx 26
+{ 0x2002;  19057; -8575; 71682;  0.337786; 0.523968; -0.582559; 0.621356;  -1; 1; } // 0
+
+P 4; B 19026; C 3; N B19026_03; b  // idx 25
+{ 0x2002;  19335; -8117; 60163;  0.337786; 0.523968; -0.582559; 0.621356;  -1; 1; } // 0
+
+P 5; B 19026; C 4; N B19026_04; b  // idx 23
+{ 0x2002;  20823; -8310; 48786;  0.337786; 0.523968; -0.582559; 0.621356;  -1; 1; } // 0
+
+P 6; B 19026; C 5; N B19026_05; b  // idx 24
+{ 0x2002;  21522; -8782; 37385;  0.337786; 0.523968; -0.582559; 0.621356;  -1; 1; } // 0
+
+P 7; B 19026; C 6; N B19026_06; b  // idx 28
+{ 0x2002;  -23352; -8868; 48232;  0.351197; 0.546322; 0.606888; -0.577251;  -1; 1; } // 0
+
+P 8; B 19026; C 7; N B19026_07; b  // idx 29
+{ 0x2002;  -25027; -7404; 37325;  0.632101; -0.586027; -0.504727; 0.633896;  -1; 1; } // 0
+
+P 9; B 19026; C 8; N B19026_08; b  // idx 30
+{ 0x2002;  -22194; -8305; 59810;  0.351197; 0.546322; 0.606888; -0.577251;  -1; 1; } // 0
+
+P 10; B 19026; C 9; N B19026_09; b  // idx 31
+{ 0x2002;  -21064; -8350; 71258;  0.351197; 0.546322; 0.606888; -0.577251;  -1; 1; } // 0
+
+P 11; B 19026; C 10; N B19026_10; b  // idx 32
+{ 0x2002;  -19855; -8302; 82587;  0.351197; 0.546322; 0.606888; -0.577251;  -1; 1; } // 0
+
+
+//FRONT TURRETS
+P 12; B ships\props\bigturret_dummy; C 2; N Bships\props\bigturret_dummy_2fronttop; b  // idx 1
+{ 0x2002;  -798; -3715; 261513;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+P 13; B ships\props\bigturret_dummy; C 2; N Bships\props\bigturret_dummy_2frontright; b  // idx 2
+{ 0x2002;  24712; -8682; 257995;  0.113262; 0.000000; 0.000000; -1.000000;  -1; 1; } // 0
+P 14; B ships\props\bigturret_dummy; C 2; N Bships\props\bigturret_dummy_2frontleft; b  // idx 3
+{ 0x2002;  -28165; -9899; 258902;  0.099638; 0.000000; 0.000000; 1.000000;  -1; 1; } // 0
+
+//RIGHT
+P 15; B ships\props\bigturret_dummy; C 3; N Bships\props\bigturret_dummy_3right; b  // idx 5
+{ 0x2002;  18065; 21578; -29060;  0.280; 0.000; 1.000; 0.000;  -1; 1; } // 0
+
+//REAR
+P 16; B ships\props\bigturret_dummy; C 4; N Bships\props\bigturret_dummy_4leftrear; b  // idx 7
+{ 0x2002;  -3916; -31282; -104359;  0.500000; 0.845743; -0.500000; 0.000000;  -1; 1; } // 0
+P 17; B ships\props\bigturret_dummy; C 4; N Bships\props\bigturret_dummy_4rightrear; b  // idx 8
+{ 0x2002;  2476; -31491; -106218;  0.500000; 0.818233; 0.500000; -0.000000;  -1; 1; } // 0
+
+//LEFT
+P 18; B ships\props\bigturret_dummy; C 5; N Bships\props\bigturret_dummy_5left; b  // idx 10
+{ 0x2002;  -18898; 20874; -29638;  0.280; 0.000; -1.000; 0.000;  -1; 1; } // 0
+
+//TOP
+P 19; B ships\props\turretdummy; C 6; N Bships\props\turretdummy; b  // idx 12
+{ 0x2002;  -14435; 31508; -38381;  0.250000; -1.000000; 0.000000; 0.000000;  -1; 1; } // 0
+P 20; B ships\props\turretdummy; C 6; N Bships\props\turretdummy; b  // idx 13
+{ 0x2002;  8897; 31945; -38364;  0.250000; -1.000000; 0.000000; 0.000000;  -1; 1; } // 0
+P 21; B ships\props\turretdummy; C 6; N Bships\props\turretdummy; b  // idx 14
+{ 0x2002;  4064; 32025; -18493;  0.250000; -1.000000; 0.000000; 0.000000;  -1; 1; } // 0
+P 22; B ships\props\turretdummy; C 6; N Bships\props\turretdummy; b  // idx 15
+{ 0x2002;  -6117; 31840; -18126;  0.250000; -1.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+//BOTTOM
+P 23; B ships\props\turretdummy; C 7; N Bships\props\turretdummy; b  // idx 17
+{ 0x2002;  0; -75250; -2500;  0.500; 0.000; -0.710; 0.710;  -1; 1; } // 0
+P 24; B ships\props\turretdummy; C 7; N Bships\props\turretdummy; b  // idx 18
+{ 0x2002;  0; -75250; -6625;  0.500; 0.000; -0.710; 0.710;  -1; 1; } // 0
+P 25; B ships\props\turretdummy; C 7; N Bships\props\turretdummy; b  // idx 19
+{ 0x2002;  0; -75250; -10750;  0.500; 0.000; -0.710; 0.710;  -1; 1; } // 0
+P 26; B ships\props\turretdummy; C 7; N Bships\props\turretdummy; b  // idx 20
+{ 0x2002;  0; -75250; -14875;  0.500; 0.000; -0.710; 0.710;  -1; 1; } // 0
+
+//COCKPITS
+P 27; B ships\props\cameradummy; C 1; N Bships\props\cameradummy_2bridge; b  // idx 4
+{ 0x2002;   0; 25000; 10000;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 28; B ships\props\cameradummy; C 2; N Bships\props\cameradummy_2front; b  // idx 4
+{ 0x2002;  0; 25000; 272500;  0.000000; 0.000000; -1.000000; 0.000000;  -1; 1; } // 0
+
+P 29; B ships\props\cameradummy; C 3; N Bships\props\cameradummy_3right; b  // idx 6
+{ 0x2002;  36000; 25500; -4500;  0.280; 0.000; 1.000; 0.000;  -1; 1; } // 0
+
+P 30; B ships\props\cameradummy; C 4; N Bships\props\cameradummy_4rear; b  // idx 9
+{ 0x2002;  0; -10500; -115000;  0.500000; 0.000000; 1.000000; 0.000000;  -1; 1; } // 0
+
+P 31; B ships\props\cameradummy; C 5; N Bships\props\cameradummy_5left; b  // idx 11
+{ 0x2002;  -36000; 25500; -4500;  0.280; 0.000; -1.000; 0.000;  -1; 1; } // 0
+
+P 32; B ships\props\cameradummy; C 6; N Bships\props\cameradummy_5flaktop; b  // idx 16
+{ 0x2002;  0; 33000; -28902;  0.250000; -1.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 33; B ships\props\cameradummy; C 7; N Bships\props\cameradummy_6flakbottom; b  // idx 21
+{ 0x2002;  0; -76750; -8250;  0.500; 0.000; -0.710; 0.710;  -1; 1; } // 0
+
+
+P 34; B 19103; C 1; N B19103_01; b
+{ 0x2002;  0; -100000; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; }

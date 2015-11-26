@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="yes" ?>
+<?xml-stylesheet href="x2script.xsl" type="text/xsl" ?>
+<script>
+<name>adam.init</name>
+<version>0</version>
+<engineversion>53</engineversion>
+<description>Init detector hotkey</description>
+<arguments>
+</arguments>
+<sourceplaintext>
+<![CDATA[
+@ START [THIS] -> call script plugin.hotkeymanager.add :  Hotkey Name ID='adam.detect'  Display Text='Find wares in sector'  Hotkey Script='adam.findwaresinsector'
+  return null
+]]>
+</sourceplaintext>
+<sourcetext>
+<line interruptable="@" indent=""><var>START&#160;</var><var>[THIS]&#160;-&gt;</var><text>&#160;call&#160;script&#160;</text><call>plugin.hotkeymanager.add</call><text>&#160;:&#160;</text><text>&#160;Hotkey&#160;Name&#160;ID=</text><var>'adam.detect'</var><text>&#160;</text><text>&#160;Display&#160;Text=</text><var>'Find&#160;wares&#160;in&#160;sector'</var><text>&#160;</text><text>&#160;Hotkey&#160;Script=</text><var>'adam.findwaresinsector'</var></line>
+<line indent=""><text>return&#160;</text><var>null</var></line>
+</sourcetext>
+<codearray>
+
+<sval type="array" size="10">
+  <sval type="string" val="adam.init"/>
+  <sval type="int" val="53"/>
+  <sval type="string" val="Init detector hotkey"/>
+  <sval type="int" val="0"/>
+  <sval type="int" val="0"/>
+  <sval type="int" val="0"/>
+  <sval type="array" size="2">
+    <sval type="array" size="12">
+      <sval type="int" val="102"/>
+      <sval type="string" val="plugin.hotkeymanager.add"/>
+      <sval type="int" val="-2147483646"/>
+      <sval type="int" val="131075"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="adam.detect"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="Find wares in sector"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="adam.findwaresinsector"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="103"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+  </sval>
+  <sval type="int" val="0"/>
+  <sval type="int" val="0"/>
+  <sval type="int" val="0"/>
+</sval>
+
+</codearray>
+<nosignature>7286</nosignature>
+</script>

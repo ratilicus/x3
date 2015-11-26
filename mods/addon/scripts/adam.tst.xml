@@ -1,0 +1,352 @@
+<?xml version="1.0" standalone="yes" ?>
+<?xml-stylesheet href="x2script.xsl" type="text/xsl" ?>
+<script>
+<name>adam.tst</name>
+<version>1</version>
+<engineversion>53</engineversion>
+<description>Reports the location of all ware containers and puts an Adv. Sat on them.</description>
+<arguments>
+<argument index="1" name="ware" type="Var/Ware" desc="ware" />
+</arguments>
+<sourceplaintext>
+<![CDATA[
+  $menu = array alloc: size=0
+  $amounts = array alloc: size=0
+  
+  $stations = get station array: resource=$ware include empty=[FALSE]
+  $count = size of array $stations
+  while $count
+    dec $count = 
+    $obj = $stations[$count]
+    if not $obj -> is of type Navigational Beacon
+      $Sector = $obj -> get sector
+      $X = $Sector -> get universe x index
+      $Y = $Sector -> get universe y index
+      $sector.name = sprintf: fmt='%s[%s, %s]', $Sector, $X, $Y, null, null
+      if $obj -> can sell ware $ware
+        $amount = $obj -> get amount of ware $ware in cargo bay
+        if $amount > 0
+          
+          
+          $pos = sprintf: fmt='X=%s Y=%s Z=%s', $Xpos, $Ypos, $Zpos, null, null
+          $text = sprintf: fmt='%s in %s (at %s)', $obj, $sector.name, $amount, null, null
+          add non selectable menu item: $menu, text=$text
+          append $amount to array $amounts
+        end
+      end
+    end
+  end
+  
+  $menu = sort array: data=$menu sort values=$amounts
+  $TheMenu = open custom info menu: title='Find wares in stations' description='All Floating Ware Containers And Abandoned Ships In Your Current Universe' option array=$menu maxoptions=null
+  
+  return null
+]]>
+</sourceplaintext>
+<sourcetext>
+<line indent=""><var>$menu&#160;=&#160;</var><text>array&#160;alloc:&#160;size=</text><var>0</var></line>
+<line indent=""><var>$amounts&#160;=&#160;</var><text>array&#160;alloc:&#160;size=</text><var>0</var></line>
+<line indent=""></line>
+<line indent=""><var>$stations&#160;=&#160;</var><text>get&#160;station&#160;array:&#160;resource=</text><var>$ware</var><text>&#160;include&#160;empty=</text><var>[FALSE]</var></line>
+<line indent=""><var>$count&#160;=&#160;</var><text>size&#160;of&#160;array&#160;</text><var>$stations</var></line>
+<line indent=""><var>while&#160;</var><var>$count</var></line>
+<line indent="&#160;"><text>dec&#160;</text><var>$count&#160;=&#160;</var></line>
+<line indent="&#160;"><var>$obj&#160;=&#160;</var><var>$stations</var><text>[</text><var>$count</var><text>]</text></line>
+<line indent="&#160;"><var>if&#160;not&#160;</var><var>$obj&#160;-&gt;</var><text>&#160;is&#160;of&#160;type&#160;</text><var>Navigational&#160;Beacon</var></line>
+<line indent="&#160;&#160;"><var>$Sector&#160;=&#160;</var><var>$obj&#160;-&gt;</var><text>&#160;get&#160;sector</text></line>
+<line indent="&#160;&#160;"><var>$X&#160;=&#160;</var><var>$Sector&#160;-&gt;</var><text>&#160;get&#160;universe&#160;x&#160;index</text></line>
+<line indent="&#160;&#160;"><var>$Y&#160;=&#160;</var><var>$Sector&#160;-&gt;</var><text>&#160;get&#160;universe&#160;y&#160;index</text></line>
+<line indent="&#160;&#160;"><var>$sector.name&#160;=&#160;</var><text>sprintf:&#160;fmt=</text><var>'%s[%s,&#160;%s]'</var><text>,&#160;</text><var>$Sector</var><text>,&#160;</text><var>$X</var><text>,&#160;</text><var>$Y</var><text>,&#160;</text><var>null</var><text>,&#160;</text><var>null</var></line>
+<line indent="&#160;&#160;"><var>if&#160;</var><var>$obj&#160;-&gt;</var><text>&#160;can&#160;sell&#160;ware&#160;</text><var>$ware</var></line>
+<line indent="&#160;&#160;&#160;"><var>$amount&#160;=&#160;</var><var>$obj&#160;-&gt;</var><text>&#160;get&#160;amount&#160;of&#160;ware&#160;</text><var>$ware</var><text>&#160;in&#160;cargo&#160;bay</text></line>
+<line indent="&#160;&#160;&#160;"><var>if&#160;</var><var>$amount</var><text>&#160;</text><var>&gt;</var><text>&#160;</text><var>0</var></line>
+<line indent="&#160;&#160;&#160;&#160;"></line>
+<line indent="&#160;&#160;&#160;&#160;"></line>
+<line indent="&#160;&#160;&#160;&#160;"><var>$pos&#160;=&#160;</var><text>sprintf:&#160;fmt=</text><var>'X=%s&#160;Y=%s&#160;Z=%s'</var><text>,&#160;</text><var>$Xpos</var><text>,&#160;</text><var>$Ypos</var><text>,&#160;</text><var>$Zpos</var><text>,&#160;</text><var>null</var><text>,&#160;</text><var>null</var></line>
+<line indent="&#160;&#160;&#160;&#160;"><var>$text&#160;=&#160;</var><text>sprintf:&#160;fmt=</text><var>'%s&#160;in&#160;%s&#160;(at&#160;%s)'</var><text>,&#160;</text><var>$obj</var><text>,&#160;</text><var>$sector.name</var><text>,&#160;</text><var>$amount</var><text>,&#160;</text><var>null</var><text>,&#160;</text><var>null</var></line>
+<line indent="&#160;&#160;&#160;&#160;"><text>add&#160;non&#160;selectable&#160;menu&#160;item:&#160;</text><var>$menu</var><text>,&#160;text=</text><var>$text</var></line>
+<line indent="&#160;&#160;&#160;&#160;"><text>append&#160;</text><var>$amount</var><text>&#160;to&#160;array&#160;</text><var>$amounts</var></line>
+<line indent="&#160;&#160;&#160;"><text>end</text></line>
+<line indent="&#160;&#160;"><text>end</text></line>
+<line indent="&#160;"><text>end</text></line>
+<line indent=""><text>end</text></line>
+<line indent=""></line>
+<line indent=""><var>$menu&#160;=&#160;</var><text>sort&#160;array:&#160;data=</text><var>$menu</var><text>&#160;sort&#160;values=</text><var>$amounts</var></line>
+<line indent=""><var>$TheMenu&#160;=&#160;</var><text>open&#160;custom&#160;info&#160;menu:&#160;title=</text><var>'Find&#160;wares&#160;in&#160;stations'</var><text>&#160;description=</text><var>'All&#160;Floating&#160;Ware&#160;Containers&#160;And&#160;Abandoned&#160;Ships&#160;In&#160;Your&#160;Current&#160;Universe'</var><text>&#160;option&#160;array=</text><var>$menu</var><text>&#160;maxoptions=</text><var>null</var></line>
+<line indent=""></line>
+<line indent=""><text>return&#160;</text><var>null</var></line>
+</sourcetext>
+<codearray>
+
+<sval type="array" size="10">
+  <sval type="string" val="adam.tst"/>
+  <sval type="int" val="53"/>
+  <sval type="string" val="Reports the location of all ware containers and puts an Adv. Sat on them."/>
+  <sval type="int" val="1"/>
+  <sval type="int" val="0"/>
+  <sval type="array" size="17">
+    <sval type="string" val="ware"/>
+    <sval type="string" val="menu"/>
+    <sval type="string" val="amounts"/>
+    <sval type="string" val="stations"/>
+    <sval type="string" val="count"/>
+    <sval type="string" val="obj"/>
+    <sval type="string" val="Sector"/>
+    <sval type="string" val="X"/>
+    <sval type="string" val="Y"/>
+    <sval type="string" val="sector.name"/>
+    <sval type="string" val="amount"/>
+    <sval type="string" val="pos"/>
+    <sval type="string" val="Xpos"/>
+    <sval type="string" val="Ypos"/>
+    <sval type="string" val="Zpos"/>
+    <sval type="string" val="text"/>
+    <sval type="string" val="TheMenu"/>
+  </sval>
+  <sval type="array" size="23">
+    <sval type="array" size="4">
+      <sval type="int" val="128"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="128"/>
+      <sval type="int" val="2"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="1460"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="131075"/>
+      <sval type="int" val="9"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="131"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="3"/>
+    </sval>
+    <sval type="array" size="7">
+      <sval type="int" val="104"/>
+      <sval type="int" val="-1610607607"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="-1"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="143"/>
+      <sval type="int" val="4"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="129"/>
+      <sval type="int" val="5"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="4"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="710"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="5"/>
+      <sval type="int" val="-536866044"/>
+      <sval type="int" val="9"/>
+      <sval type="int" val="459032"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="703"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="5"/>
+      <sval type="int" val="6"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="804"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="6"/>
+      <sval type="int" val="7"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="805"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="6"/>
+      <sval type="int" val="8"/>
+    </sval>
+    <sval type="array" size="14">
+      <sval type="int" val="149"/>
+      <sval type="int" val="9"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="%s[%s, %s]"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="6"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="7"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="8"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="625"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="5"/>
+      <sval type="int" val="-1610607869"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="618"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="5"/>
+      <sval type="int" val="10"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="13">
+      <sval type="int" val="104"/>
+      <sval type="int" val="-1610607869"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="10"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="15"/>
+      <sval type="int" val="2"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="-1"/>
+      <sval type="int" val="2"/>
+      <sval type="int" val="-2"/>
+    </sval>
+    <sval type="array" size="14">
+      <sval type="int" val="149"/>
+      <sval type="int" val="11"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="X=%s Y=%s Z=%s"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="12"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="13"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="14"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="14">
+      <sval type="int" val="149"/>
+      <sval type="int" val="15"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="%s in %s (at %s)"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="5"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="9"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="10"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="5">
+      <sval type="int" val="1556"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="15"/>
+    </sval>
+    <sval type="array" size="5">
+      <sval type="int" val="135"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="2"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="10"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="112"/>
+      <sval type="int" val="4"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="1417"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="2"/>
+    </sval>
+    <sval type="array" size="10">
+      <sval type="int" val="1489"/>
+      <sval type="int" val="16"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="Find wares in stations"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="All Floating Ware Containers And Abandoned Ships In Your Current Universe"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="103"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+  </sval>
+  <sval type="array" size="1">
+    <sval type="array" size="2">
+      <sval type="int" val="13"/>
+      <sval type="string" val="ware"/>
+    </sval>
+  </sval>
+  <sval type="array" size="9">
+    <sval type="array" size="2">
+      <sval type="int" val="2"/>
+      <sval type="int" val="2"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="15"/>
+      <sval type="int" val="2"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="15"/>
+      <sval type="int" val="2"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="19"/>
+      <sval type="int" val="4"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="19"/>
+      <sval type="int" val="4"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="19"/>
+      <sval type="int" val="4"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="20"/>
+      <sval type="int" val="4"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="20"/>
+      <sval type="int" val="2"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="22"/>
+      <sval type="int" val="2"/>
+    </sval>
+  </sval>
+  <sval type="int" val="0"/>
+</sval>
+
+</codearray>
+<nosignature>3285</nosignature>
+</script>

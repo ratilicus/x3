@@ -1,0 +1,78 @@
+/===============================================================
+/ 3D Scene Information file F:\SRC\X3\x3\objects\ships\teladi\teladi_TL_scene.bod
+/ Automatically generated from F:\SRC\X3\x3\objects\ships\teladi\teladi_TL_scene.max
+/===============================================================
+/ EGOSOFT Bodyfile exporter version 3.51 [Sep 12 2005 21:00:48]
+VER: 3;
+/ >> Fri Sep 30 18:25:50 2005
+
+/ >> Fri Sep 30 18:25:50 2005
+
+/ Animation time interval: 0..48000
+/ >> Fri Sep 30 18:25:50 2005
+ / Staring Biped Key Reading/ >> Fri Sep 30 18:25:50 2005
+ / finished Biped Key Reading
+/     Fri Sep 30 18:25:50 2005
+/     Node Bships\teladi\teladi_TL_1b Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 0; B ships\teladi\teladi_TL; C 1; N Bships\teladi\teladi_TL_1b; b
+  { 0x2002;  -0; -0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  10000;  1; } // 1
+  { 0x2002;  -0; -0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node B19027a Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 1; B 19027; N B19027a; b
+  { 0x2002;  -197032; -5419; 19167;  0.250000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node B19026_1 Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 2; B 19026; C 1; N B19026_1; b
+  { 0x2002;  -234691; -84481; 149582;  0.250000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node B19026_2 Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 3; B 19026; C 2; N B19026_2; b
+  { 0x2002;  -234691; -84481; 128909;  0.250000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node B19026_3 Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 4; B 19026; C 3; N B19026_3; b
+  { 0x2002;  -234691; -84481; 108372;  0.250000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node Bships\props\bigturret_dummy_2b Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 5; B ships\props\bigturret_dummy; C 2; N Bships\props\bigturret_dummy_2b; b
+  { 0x2002;  101933; 9924; 632829;  0.020529; 0.000000; 0.000000; -1.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node Bships\props\bigturret_dummy_4b Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 6; B ships\props\bigturret_dummy; C 4; N Bships\props\bigturret_dummy_4b; b
+  { 0x2002;  176527; 213899; -605104;  0.500000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node Bships\props\bigturret_dummy_3bt Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 7; B ships\props\bigturret_dummy; C 3; N Bships\props\bigturret_dummy_3bt; b
+  { 0x2002;  176397; 213253; 43330;  0.250000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node Bships\props\bigturret_dummy_5b01 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 8; B ships\props\bigturret_dummy; C 5; N Bships\props\bigturret_dummy_5b01; b
+  { 0x2002;  -176397; 213253; 43330;  0.250000; 0.000000; -1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node Bships\props\cameradummy_2b Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 9; B ships\props\cameradummy; C 2; N Bships\props\cameradummy_2b; b
+  { 0x2002;  103487; 64200; 707298;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node Bships\props\cameradummy_3b01 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 10; B ships\props\cameradummy; C 3; N Bships\props\cameradummy_3b01; b
+  { 0x2002;  281947; 40540; 26916;  0.250000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node Bships\props\cameradummy_4b02 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 11; B ships\props\cameradummy; C 4; N Bships\props\cameradummy_4b02; b
+  { 0x2002;  177302; 204064; -618682;  0.500000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Fri Sep 30 18:25:50 2005
+/     Node Bships\props\cameradummy_5b03 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 12; B ships\props\cameradummy; C 5; N Bships\props\cameradummy_5b03; b
+  { 0x2002;  -278168; 40264; 27887;  0.250000; 0.000000; -1.000000; 0.000000;  -1;  -1; } // -1
+
+//BIGDOCK
+P 13; B 19040; C 1; N B19040_1; b  // idx 13
+{ 0x2002;  0; 250000; -250000;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 14; B 19103; C 1; N B19103_1; b  // idx 13
+{ 0x2002;  300000; -160000; -160000;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 15; B 19103; C 1; N B19103_2; b  // idx 13
+{ 0x2002;  -300000; -160000; -160000;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+

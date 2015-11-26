@@ -1,0 +1,91 @@
+/===============================================================
+/ 3D Scene Information file C:\Users\Bobby\Desktop\Next Update\objects\ships\m7\Argon_M7_scene.bod
+/ Automatically generated from D:\Max Scenes\[CURRENT]\PROCESSED\XTM Assets\M7\Argon\Argon_M7_Scene_resized.max
+/===============================================================
+/ EGOSOFT Bodyfile exporter version 3.53 [Jul 31 2007 12:17:29]
+VER: 3;
+
+/ Cerberus: Turrets redone by Gazz 07.12.08
+
+P 0; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-01; b
+  { 0x2002;  -12851; -7732; 119869;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -12851; -7732; 119869;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 1; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-02; b
+  { 0x2002;  -11859; -7732; 119869;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -11859; -7732; 119869;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 2; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-03; b
+  { 0x2002;  11691; -7842; 120090;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  11691; -7842; 120090;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 3; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-04; b
+  { 0x2002;  12683; -7842; 120090;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  12683; -7842; 120090;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 4; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-05; b
+  { 0x2002;  -12775; -14921; 120010;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -12775; -14921; 120010;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 5; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-06; b
+  { 0x2002;  -11783; -14921; 120010;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  -11783; -14921; 120010;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 6; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-07; b
+  { 0x2002;  11656; -14936; 119984;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  11656; -14936; 119984;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+P 7; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-08; b
+  { 0x2002;  12648; -14936; 119984;  0.000000; 0.000000; 0.000000; 0.000000;  3333;  1; } // 1
+  { 0x2002;  12648; -14936; 119984;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+/ bridge:
+/ Cockpit back of the ship, looking over the hangars:  0; 50000; -107500
+P 8; B ships\props\cameradummy; C 1; N Bships\props\cameradummy_1br; b
+  { 0x2002;  -5500; 6500; 104750;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+P 9; B ships\props\cameradummy; C 3; N Bships\props\cameradummy_3ri; b
+  { 0x2002;  25750; 8750; 12250;  0.250; 0.000; 1.000; 0.000;  -1;  -1; } // -1
+
+P 10; B ships\props\cameradummy; C 4; N Bships\props\cameradummy_4re; b
+  { 0x2002;  62; -24963; -172480;  0.500000; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+
+P 11; B ships\props\cameradummy; C 5; N Bships\props\cameradummy_5l; b
+  { 0x2002;  -25750; 8750; 12250;  0.250; 0.000; -1.000; 0.000;  -1;  -1; } // -1
+
+P 12; B ships\props\cameradummy; C 6; N Bships\props\cameradummy_6t; b
+  { 0x2002;  0; 11000; -45750;  0.250000; -1.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+P 13; B ships\props\cameradummy; C 7; N Bships\props\cameradummy_7b; b
+  { 0x2002;  0; -44500; -51500;  0.250000; 1.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+
+
+P 14; B ships\M7\Argon_M7; C 1; N Bships\M7\Argon_M7_1a; b
+  { 0x2002;  0; 0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1;  -1; } // -1
+/     Node B19027a Class [Editable Poly, GEOMOBJECT_CLASS_ID]
+P 15; B 19027; N B19027a; b
+  { 0x2002;  -4998; -11265; 15811;  0.249903; 0.000000; 1.000000; 0.000000;  -1;  -1; } // -1
+/     Node B19026_1 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 16; B 19026; C 1; N B19026_1; b
+  { 0x2002;  16677; -11232; 24104;  0.250000; 0.000000; -1.000000; 0.000000;  -1;  -1; } // -1
+/     Node B19026_2 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 17; B 19026; C 2; N B19026_2; b
+  { 0x2002;  16677; -11246; 6114;  0.250000; 0.000000; -1.000000; 0.000000;  -1;  -1; } // -1
+/     Node B19026_3 Class [Editable Mesh, GEOMOBJECT_CLASS_ID]
+P 18; B 19026; C 3; N B19026_3; b
+  { 0x2002;  16389; -11232; 15026;  0.250000; 0.000000; -1.000000; 0.000000;  -1;  -1; } // -1
+
+/rear
+P 19; B ships\props\bigturret_dummy; C 4; N Bships\props\bigturret_dummy_4ra; b
+  { 0x2002;  61; -31666; -148906;  0.500; 1.000; 0.000; 0.000;  -1;  -1; } // -1
+
+/right
+P 20; B ships\props\bigturret2_dummy; C 3; N Bships\props\bigturret2_dummy_3r; b
+  { 0x2002;  16000; -250; 58000;  0.250; 0.000; 1.000; 0.000;  -1;  -1; } // -1
+/left
+P 21; B ships\props\bigturret2_dummy; C 5; N Bships\props\bigturret2_dummy_5l; b
+  { 0x2002;  -16000; -250; 58000;  0.250; 0.000; -1.000; 0.000;  -1;  -1; } // -1
+
+/bottom
+P 22; B ships\props\bigturret2_dummy; C 7; N Bships\props\bigturret2_dummy_7b; b
+  { 0x2002;  0; -36250; -106000;  0.250; 1.000; 0.000; 0.000;  -1;  -1; } // -1
+/top
+P 23; B ships\props\bigturret2_dummy; C 6; N Bships\props\bigturret2_dummy_6t; b
+  { 0x2002;  0; 7000; -5250;  0.250; -1.000; 0.000; 0.000;  -1;  -1; } // -1
+
+
+P 24; B 19103; C 1; N B19103_01; b
+{ 0x2002;  0; -100000; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; }

@@ -1,7 +1,7 @@
 import struct
 import os
 from x3lib import walk_files, StreamString as Stream
-
+import traceback
 
 class vec(list):
     def __init__(self, x=None, y=None, z=None):
@@ -60,7 +60,7 @@ class lod(object):
 
         img = Image.new("RGB", (900,315), "#FFFFFF")
         draw = ImageDraw.Draw(img)
-        colors = [(((i*64621)**2) % 256, (((i*12415)**4) % 256), (((i*834793)*3) % 256)) for i in xrange(64)]
+        colors = [(((i*64621)**2) % 256, (((i*12415)**4) % 256), (((i*834793)*3) % 256)) for i in xrange(256)]
 
         DIVIDER = 65536.0 / 150.0
 
@@ -369,19 +369,16 @@ def gen_thumb(check_exists=True, scenes=None, db=None):
     for i, (p, fn) in enumerate(model_files, start=1):
         pfn = '%s/%s' % (p,fn)
 
-        dbship = None
+        dbships = None
         if scenes and db:
             scene0 = pfn[11:-4].lower()
             scene = scene0[:-6] if scene0.endswith('_scene') else scene0
 
-            id = scenes.get(scene, '')
-            if id:
-                dbship = db.ships.find_one({'_id': id})
+            ids = scenes.get(scene, '')
+            if ids:
+                dbships = tuple(db.ships.find({'_id': {'$in': ids}, 'size':{'$exists': False}}))
 
-#            if 'ships' in scene and not dbship:
-#                print '{:50} | {:50}'.format(scene0, scene)
-
-        if not dbship or 'size' in dbship:
+        if not dbships:
             continue
 
         f, e =fn.rsplit('.', 1)
@@ -397,22 +394,32 @@ def gen_thumb(check_exists=True, scenes=None, db=None):
             with open(pfn) as f:
                 lods = get_lods(f.read(), max_lod=1)
             xt = lods[0].thumb(fno)
-            if xt and dbship:
-                dbship['size'] = size = dict(w=xt[0], h=xt[1], l=xt[2])
-                db.ships.save(dbship)
-                print '\tsetting size: {} to {}\n'.format(id, size)
+            if xt and dbships:
+                for ship in dbships:
+                    ship['size'] = size = dict(w=xt[0], h=xt[1], l=xt[2])
+                    db.ships.save(ship)
+                    print '\tsetting size: {} to {}\n'.format(ship['_id'], size)
+            else:
+                print 'NO XT'
 
         except Exception, e:
             print 'Error processing %s\n%s' % (pfn, e)
+            raise
 
 
 def get_info(scenes):
+
+    scene_ships = {s.lower():s for s in scenes.keys()}
+#    print '\n'.join(sorted(scene_ships))
+#    return
+#    model_files = [f for f in walk_files('.pbb') if 'ships' in f[1].lower()]
     model_files = walk_files('.pbb')
     model_file_count = len(model_files)
     ships = []
     for i, (p, fn) in enumerate(model_files, start=1):
         pfn = '%s/%s' % (p,fn)
         f, e =fn.rsplit('.', 1)
+#        print pfn
         #print 'Processing %d/%d %s' % (i,model_file_count, fn)
         try:
             with open(pfn) as f:
@@ -421,25 +428,43 @@ def get_info(scenes):
             scene = pfn[11:-4].lower()
             scene = scene[:-6] if scene.endswith('_scene') else scene
             id = scenes.get(scene, '')
-            ships.append((65536.0*lods[0].scale/500.0*2, scene, id))
+            # TODO: use the _scene.pbd file to determine the pbb file names
+            if not id and not scene.startswith('stations'):
+                found = False
+                for ship_key in scene_ships:
+                    if ship_key in pfn.lower():
+                        ship = scene_ships[ship_key]
+                        id = scenes.get(ship, '??')
+                        print 'PARTIAL | {:60} | {:20} | {}'.format(pfn, ship, id)
+                        found = True
+                if not found:
+                    print "NOT FOUND", scene
+            ships.append((65536.0*lods[0].scale/500.0*2, scene, pfn))
         except Exception, e:
+            print 'X', str(e), pfn
             pass
 #            print '\tError processing %s\n%s\n' % (pfn, e)
             
 #            raise
-    for s, f, id in sorted(ships, reverse=True):
-        print '%9.0fm | %-60s | %s' % (s, f, id)
+#    for s, f, id in sorted(ships, reverse=True):
+#        print '%9.0fm | %-60s | %s' % (s, f, id)
     print len(ships)
 
 
 def get_ship_scenes(db):
-    def get_scene(scene):
-        scene1 = scene.replace('\\', '/').lower()
-        scene2 = scene1[:-6] if scene1.endswith('_scene') else scene1
-#        print '{:50} | {:50}'.format(scene, scene2)
-        return scene2
-    return {get_scene(s['ship_scene']): s['_id']
-            for s in db.ships.find({},{'ship_scene':1}) if isinstance(s['ship_scene'], (str, unicode))}
+    scenes = {}
+    for s in db.ships.find({},{'ship_scene':1}):
+        scene0 = s['ship_scene']
+        if not isinstance(scene0, (str, unicode)):
+            continue
+        scene1 = scene0.replace('\\', '/').lower()
+        scene = scene1[:-6] if scene1.endswith('_scene') else scene1
+        id = s['_id']
+        if scene not in scenes:
+            scenes[scene] = [id]
+        else:
+            scenes[scene].append(id)
+    return scenes
 
 ########################################################################################################################
 
@@ -449,6 +474,6 @@ if __name__=='__main__':
     db = MongoClient().x3
 
     scenes = get_ship_scenes(db)
-#    get_info(scenes, db)
+#    get_info(scenes)
     gen_thumb(False, scenes=scenes, db=db)
     #gen_obj()

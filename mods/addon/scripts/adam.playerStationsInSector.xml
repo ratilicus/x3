@@ -1,0 +1,181 @@
+<?xml version="1.0" standalone="yes" ?>
+<?xml-stylesheet href="x2script.xsl" type="text/xsl" ?>
+<script>
+<name>adam.playerStationsInSector</name>
+<version>0</version>
+<engineversion>53</engineversion>
+<description>tst</description>
+<arguments>
+</arguments>
+<sourceplaintext>
+<![CDATA[
+  $menu = array alloc: size=0
+  
+  $sector = [PLAYERSHIP] -> get sector
+  $stations = $sector -> get player owned station array from sector
+  $count = size of array $stations
+  while $count
+    dec $count = 
+    $station = $stations[$count]
+    $station.pos = $station -> get position as array
+    $info = sprintf: fmt='%s %s', $station, $station.pos, null, null, null
+    add non selectable menu item: $menu, text=$info
+  end
+  $menu.out = open custom info menu: title='stations' description='menu' option array=$menu maxoptions=null
+  
+  return null
+]]>
+</sourceplaintext>
+<sourcetext>
+<line indent=""><var>$menu&#160;=&#160;</var><text>array&#160;alloc:&#160;size=</text><var>0</var></line>
+<line indent=""></line>
+<line indent=""><var>$sector&#160;=&#160;</var><var>[PLAYERSHIP]&#160;-&gt;</var><text>&#160;get&#160;sector</text></line>
+<line indent=""><var>$stations&#160;=&#160;</var><var>$sector&#160;-&gt;</var><text>&#160;get&#160;player&#160;owned&#160;station&#160;array&#160;from&#160;sector</text></line>
+<line indent=""><var>$count&#160;=&#160;</var><text>size&#160;of&#160;array&#160;</text><var>$stations</var></line>
+<line indent=""><var>while&#160;</var><var>$count</var></line>
+<line indent="&#160;"><text>dec&#160;</text><var>$count&#160;=&#160;</var></line>
+<line indent="&#160;"><var>$station&#160;=&#160;</var><var>$stations</var><text>[</text><var>$count</var><text>]</text></line>
+<line indent="&#160;"><var>$station.pos&#160;=&#160;</var><var>$station&#160;-&gt;</var><text>&#160;get&#160;position&#160;as&#160;array</text></line>
+<line indent="&#160;"><var>$info&#160;=&#160;</var><text>sprintf:&#160;fmt=</text><var>'%s&#160;%s'</var><text>,&#160;</text><var>$station</var><text>,&#160;</text><var>$station.pos</var><text>,&#160;</text><var>null</var><text>,&#160;</text><var>null</var><text>,&#160;</text><var>null</var></line>
+<line indent="&#160;"><text>add&#160;non&#160;selectable&#160;menu&#160;item:&#160;</text><var>$menu</var><text>,&#160;text=</text><var>$info</var></line>
+<line indent=""><text>end</text></line>
+<line indent=""><var>$menu.out&#160;=&#160;</var><text>open&#160;custom&#160;info&#160;menu:&#160;title=</text><var>'stations'</var><text>&#160;description=</text><var>'menu'</var><text>&#160;option&#160;array=</text><var>$menu</var><text>&#160;maxoptions=</text><var>null</var></line>
+<line indent=""></line>
+<line indent=""><text>return&#160;</text><var>null</var></line>
+</sourcetext>
+<codearray>
+
+<sval type="array" size="10">
+  <sval type="string" val="adam.playerStationsInSector"/>
+  <sval type="int" val="53"/>
+  <sval type="string" val="tst"/>
+  <sval type="int" val="0"/>
+  <sval type="int" val="0"/>
+  <sval type="array" size="8">
+    <sval type="string" val="menu"/>
+    <sval type="string" val="sector"/>
+    <sval type="string" val="stations"/>
+    <sval type="string" val="count"/>
+    <sval type="string" val="station"/>
+    <sval type="string" val="station.pos"/>
+    <sval type="string" val="info"/>
+    <sval type="string" val="menu.out"/>
+  </sval>
+  <sval type="array" size="13">
+    <sval type="array" size="4">
+      <sval type="int" val="128"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="703"/>
+      <sval type="int" val="131075"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="1"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="1013"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="2"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="131"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="2"/>
+    </sval>
+    <sval type="array" size="7">
+      <sval type="int" val="104"/>
+      <sval type="int" val="-1610609911"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="3"/>
+      <sval type="int" val="1"/>
+      <sval type="int" val="-1"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="143"/>
+      <sval type="int" val="3"/>
+    </sval>
+    <sval type="array" size="6">
+      <sval type="int" val="129"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="2"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="3"/>
+    </sval>
+    <sval type="array" size="4">
+      <sval type="int" val="795"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="5"/>
+    </sval>
+    <sval type="array" size="14">
+      <sval type="int" val="149"/>
+      <sval type="int" val="6"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="%s %s"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="4"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="5"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="5">
+      <sval type="int" val="1556"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="6"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="112"/>
+      <sval type="int" val="4"/>
+    </sval>
+    <sval type="array" size="10">
+      <sval type="int" val="1489"/>
+      <sval type="int" val="7"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="stations"/>
+      <sval type="int" val="5"/>
+      <sval type="string" val="menu"/>
+      <sval type="int" val="131074"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+    <sval type="array" size="3">
+      <sval type="int" val="103"/>
+      <sval type="int" val="0"/>
+      <sval type="int" val="0"/>
+    </sval>
+  </sval>
+  <sval type="int" val="0"/>
+  <sval type="array" size="3">
+    <sval type="array" size="2">
+      <sval type="int" val="1"/>
+      <sval type="int" val="2"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="11"/>
+      <sval type="int" val="4"/>
+    </sval>
+    <sval type="array" size="2">
+      <sval type="int" val="12"/>
+      <sval type="int" val="2"/>
+    </sval>
+  </sval>
+  <sval type="int" val="0"/>
+</sval>
+
+</codearray>
+<nosignature>5953</nosignature>
+</script>

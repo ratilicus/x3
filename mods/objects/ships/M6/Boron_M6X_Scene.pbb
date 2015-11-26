@@ -1,0 +1,76 @@
+/# Exported with dbox2 1.8 at 10/15/2007 6:34:48 PM
+ 
+VER: 6;
+
+/turrets should work
+
+P 0; B 114; C 12289; N 114_12289b01-BORONMEDIUMBLUE;  // idx 0
+{ 0x2002;  -11532; 4632; -47908;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 1; B 114; C 12289; N 114_12289b01-BORONMEDIUMBLUE01;  // idx 1
+{ 0x2002;  -17294; 4632; -48264;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 2; B 114; C 12289; N 114_12289b01-BORONMEDIUMBLUE02;  // idx 2
+{ 0x2002;  17294; 4632; -48264;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 3; B 114; C 12289; N 114_12289b01-BORONMEDIUMBLUE03;  // idx 3
+{ 0x2002;  11532; 4632; -47908;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 4; B 78; N 78_NAVLIGHTBIG;  // idx 4
+{ 0x2002;  0; -19866; -83804;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 5; B ships\M6\Boron_M6X; N Bships\M6\Boron_M6X; b  // idx 5
+{ 0x2002;  0; 0; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 6; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-01; b  // idx 6
+{ 0x2002;  7156; 4914; 81258;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 7; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-02; b  // idx 7
+{ 0x2002;  -7156; 4914; 81258;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 8; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-03; b  // idx 8
+{ 0x2002;  -21500; 7998; 73344;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 9; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-04; b  // idx 9
+{ 0x2002;  21500; 7998; 73344;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 10; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-05; b  // idx 10
+{ 0x2002;  -21356; 1928; 74274;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 11; B ships\props\invisible_weapon; C 1; N Bships\props\invisible_weapon_1-06; b  // idx 11
+{ 0x2002;  21356; 1928; 74274;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+
+P 12; B ships\props\m6turret4_dummy; C 2; N Bships\props\m6turret4_dummy_2-01; b  // idx 12
+{ 0x2002;  0; -1832; 55078;  0.125000; 1.000000; 0.000000; 0.000000;  -1; 1; } // 0
+P 13; B ships\props\m6turret4_dummy; C 4; N Bships\props\m6turret4_dummy_4-01; b  // idx 13
+{ 0x2002;  0; -1832; -35980;  0.500000; -0.000000; 0.887011; -0.461749;  -1; 1; } // 0
+
+P 14; B ships\props\cameradummy; C 1; N Bships\props\Z_cameradummy_1-bridge; b  // idx 16
+{ 0x2002;  0; 29000; -28000;  0.000; 0.000; 0.000; 0.000;   -1; 1; } // 0
+
+P 15; B ships\props\cameradummy; C 2; N Bships\props\Z_cameradummy_2-front; b  // idx 17
+{ 0x2002;  0; -6400; 60000;  0.125000; 1.000000; 0.000000; 0.000000;   -1; 1; } // 0
+P 16; B ships\props\cameradummy; C 4; N Bships\props\Z_cameradummy_4-rear; b  // idx 18
+{ 0x2002;  0; -7000; -40000;  0.500000; 0.000000; 0.887011; -0.461749;   -1; 1; } // 0
+
+P 17; B 114; C 12289; N 114_12289b01-BORONMEDIUMBLUE;  // idx 17
+{ 0x2002;  -11532; 4632; -47908;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 18; B 114; C 12289; N 114_12289b01-BORONMEDIUMBLUE01;  // idx 18
+{ 0x2002;  -17294; 4632; -48264;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 19; B 114; C 12289; N 114_12289b01-BORONMEDIUMBLUE02;  // idx 19
+{ 0x2002;  17294; 4632; -48264;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 20; B 114; C 12289; N 114_12289b01-BORONMEDIUMBLUE03;  // idx 20
+{ 0x2002;  11532; 4632; -47908;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; } // 0
+
+P 21; B ships\props\extern_M6_dock; C 1; N Bships\props\extern_M6_dock_01; b
+{ 0x2002;  24000; -20000; -24000;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; }
+
+P 22; B ships\props\extern_M6_dock; C 1; N Bships\props\extern_M6_dock_02; b
+{ 0x2002;  -24000; -20000; -24000;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; }
+
+P 23; B 19103; C 1; N B19103_01; b
+{ 0x2002;  0; -70000; 0;  0.000000; 0.000000; 0.000000; 0.000000;  -1; 1; }
