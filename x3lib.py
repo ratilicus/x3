@@ -163,9 +163,9 @@ class BaseObj(object):
                     count_field = self.cfield(f['count_field'])
                     try:
                         count = int(data[count_field])
-                    except Exception, e:
-                        print '(119) Error %s\ncount field: %s\ndata:' % (e, count_field)
-                        print '------------\n{}\n---------'.format(data)
+                    except Exception as e:
+                        print ('(119) Error %s\ncount field: %s\ndata:' % (e, count_field))
+                        print ('------------\n{}\n---------'.format(data))
                         raise
                 else:
                     raise Exception('unknown struct type: %r' % (f))
@@ -196,18 +196,18 @@ class BaseObj(object):
         elif not data:
             return
         elif isinstance(data, (str, unicode, float, int)):
-            print ('  '*depth)+'%s' % (data)
+            print (('  '*depth)+'%s' % (data))
             return
 
         for f, d in data.items():
             if isinstance(d, dict):
                 self.pprint(d, depth+1)
             elif isinstance(d, list):
-                print ('  '*depth)+'%s:' % (f)
+                print (('  '*depth)+'%s:' % (f))
                 for e in d:
                     self.pprint(e, depth+1)
             else:
-                print ('  '*depth)+'%s: %s' % (f, d)
+                print (('  '*depth)+'%s: %s' % (f, d))
 
     def pprint2(self, data=None, path='', label=''):
         out=[]
@@ -243,7 +243,7 @@ class StreamString(object):
         return self
     def read(self, n, peek=False, skip=0):
         if self.l-self.p < n:
-            print 'Stream.read, insufficient length', self.l, self.p, n
+            print ('Stream.read, insufficient length', self.l, self.p, n)
 
         nc = self.s[self.p:self.p+n]
         if not peek:
@@ -295,7 +295,7 @@ class Pages(object):
         try:
             raw = self.pages[page][t]
         except:
-    #        print 'ERROR trying to get page %d, %d' % (page, t)
+    #        print ('ERROR trying to get page %d, %d' % (page, t))
             return None
         res = ''
         for e in PAGE_PAT.findall(raw):
@@ -318,7 +318,7 @@ class Lookups(object):
         try:
             xmldoc = minidom.parse('ap/addon/director/dirobjdb.xsd')
         except Exception as e:
-            print 'get_lookups error: {}'.format(e)
+            print ('get_lookups error: {}'.format(e))
             return {}
         for entry in xmldoc.getElementsByTagName('xs:enumeration'):
             id = entry.attributes['value'].value.strip()
@@ -360,7 +360,7 @@ def walk_files(ext):
 def get_file(pathfilename, prepaths=('tc/objects/', 'ap/objects/')):
     import os
     if '/' not in pathfilename:
-        print 'no path> '+pathfilename
+        print ('no path> '+pathfilename)
         return None
     path, filename = pathfilename.rsplit('/', 1)
     lc_filename = filename.lower()
@@ -375,7 +375,7 @@ def get_file(pathfilename, prepaths=('tc/objects/', 'ap/objects/')):
     if new_path:
         return get_file(new_path+'/'+filename, prepaths=('',))
 
-    print 'DNE>', pathfilename
+    print ('DNE>', pathfilename)
     return None
 
 
@@ -403,16 +403,16 @@ def get_bullet_flags(bullet_bits):
 ########################################################################################################################
 
 
-if __name__ == '__main__':
-    import pymongo
-    mongo=pymongo.MongoClient()
-    db=mongo.x3
+#if __name__ == '__main__':
+    #import pymongo
+    #mongo=pymongo.MongoClient()
+    #db=mongo.x3
 
-    if 0:
-        PAGES=Pages()
-        print "Saving pages"
-        db.pages.drop()
-        for page_id, ts in PAGES.pages.items():
-            title = ts.pop(-1)
-            for id, data in ts.items():
-                db.pages.save(dict(page=page_id, page_title=title, t=id, data=data))
+    #if 0:
+    #    PAGES=Pages()
+    #    print ("Saving pages")
+    #    #db.pages.drop()
+    #    for page_id, ts in PAGES.pages.items():
+    #        title = ts.pop(-1)
+    #        for id, data in ts.items():
+    #            db.pages.save(dict(page=page_id, page_title=title, t=id, data=data))

@@ -12,11 +12,12 @@ import os
 import sys
 import os.path
 import zlib
+import struct
 
 try:
     import config
 except:
-    print 'config.py not found, please run setup.sh before using this script!'
+    print('config.py not found, please run setup.sh before using this script!')
     exit(1)
 
 class cat(object):
@@ -26,7 +27,7 @@ class cat(object):
         self.db = db
         with open(catfilename, "rb") as inputfile:
             data = inputfile.read()
-        lines = self.cat_decrypt(data).splitlines()
+        lines = self.cat_decrypt(data).decode().splitlines()
         self.datfilename = lines.pop(0)
         self.entries = {}
         nextpos = 0
@@ -53,7 +54,7 @@ class cat(object):
     @staticmethod
     def cat_decrypt(data):
         magic = cat.cat_magic()
-        return ''.join(chr(ord(b) ^ next(magic)) for b in data)
+        return struct.pack("<" + len(data)*'B', *[b ^ next(magic) for b in data])
 
     def list(self):
         for e, v in sorted(self.entries.items()):
@@ -63,7 +64,7 @@ class cat(object):
 
     def read_dat(self, pos, length):
         self.datfile.seek(pos)
-        return ''.join(chr(ord(b) ^ 0x33) for b in self.datfile.read(length))
+        return struct.pack("<" + length*'B',  *[(b) ^ 0x33 for b in self.datfile.read(length)])
 
     def read_file(self, filename):
         if not filename in self.entries:
@@ -82,12 +83,18 @@ class cat(object):
 
         if filename.endswith(('.pck', '.pbd', '.pbb')):
             rdata=None
+            success = False
             for v in range(255):
                 try:
                     data = zlib.decompress(data, v)
+                    success = True
                     break
-                except:
+                except Exception as e:
+                    print("X", e)
                     continue
+            if not success:
+               print("failed to decompress, skipping")
+               return
 
         outfile = '{}/{}'.format(self.outpath, filename)
         if self.db:
@@ -96,8 +103,8 @@ class cat(object):
                 'filename': filename,
                 'outfile': outfile
             })
-        print '{:30} > {}'.format(self.catfilename, outfile)
-        try:        
+        print('{:30} > {}'.format(self.catfilename, outfile))
+        try:
             os.makedirs(os.path.dirname(outfile))
         except:
             pass
@@ -105,22 +112,22 @@ class cat(object):
             outputfile.write(data)
 
 if __name__=='__main__':
-    import pymongo
-    mongo=pymongo.MongoClient()
-    db=mongo.x3
+    #import pymongo
+    #mongo=pymongo.MongoClient()
+    #db=mongo.x3
 
     args = sys.argv[1:]
     if not args:
         print("%s <cat file name | --all>" % sys.argv[0])
     elif args[0] == '--all':
-        db.files.drop()
+        #db.files.drop()
         catpath = config.TC
         tccats = sorted(f for f in os.listdir(catpath) if f.endswith('.cat'))
         for f in tccats:
             c = cat(
                 catfilename='{}/{}'.format(catpath, f),
                 outpath='{}/tc'.format(config.PWD),
-                db=db
+                #db=db
             )
             c.copyall()
 
@@ -130,7 +137,7 @@ if __name__=='__main__':
             c = cat(
                 catfilename='{}/{}'.format(catpath, f),
                 outpath='{}/ap'.format(config.PWD),
-                db=db
+                #db=db
             )
             c.copyall()
     else:

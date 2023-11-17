@@ -60,15 +60,15 @@ class lod(object):
 
         img = Image.new("RGB", (900,315), "#FFFFFF")
         draw = ImageDraw.Draw(img)
-        colors = [(((i*64621)**2) % 256, (((i*12415)**4) % 256), (((i*834793)*3) % 256)) for i in xrange(256)]
+        colors = [(((i*64621)**2) % 256, (((i*12415)**4) % 256), (((i*834793)*3) % 256)) for i in range(256)]
 
         DIVIDER = 65536.0 / 150.0
 
-        for c in xrange(0, 900/150*5):
+        for c in range(0, 900/150*5):
             i = c*(150.0/5)
             draw.line([i,0,i,300], fill=(192,192,192))
 
-        for c in xrange(0, 300/150*5):
+        for c in range(0, 300/150*5):
             i = c*(150.0/5)
             draw.line([0, i,900,i], fill=(192,192,192))
 
@@ -87,7 +87,7 @@ class lod(object):
             try:
                 color = colors[f.t]
             except:
-                print f.t
+                print (f.t)
                 raise
 
             for v in verts:
@@ -207,19 +207,19 @@ def load_mat5(s, m, flags):
 
 
 def get_lods(fdata, max_lod=16, load_mesh=True, load_mats=False):
-    info = (fdata[fdata.index('INFO', 0) + 4: fdata.index('/INF', 0)])
+    info = (fdata[fdata.index(b'INFO', 0) + 4: fdata.index(b'/INF', 0)])
     #print 'INFO', info
     if load_mats:
-        mat_start = fdata.index('MAT', 0)
-        mat_end = fdata.index('/MAT', mat_start)
+        mat_start = fdata.index(b'MAT', 0)
+        mat_end = fdata.index(b'/MAT', mat_start)
         data = Stream(fdata[mat_start: mat_end])
         mat_str = data.read(4)
-        if mat_str == 'MAT5' or mat_str == 'MAT6':
+        if mat_str == b'MAT5' or mat_str == b'MAT6':
             mat_ct = data.readInt()
-            print 'MAT>', mat_str, mat_ct
-            for i in xrange(mat_ct):
+            print (b'MAT>', mat_str, mat_ct)
+            for i in range(mat_ct):
                 m = Material()
-                m.version = 5 if (mat_str == 'MAT5') else 6
+                m.version = 5 if (mat_str == b'MAT5') else 6
                 if m.version==5:
                     load_mat5(data, m, 0)
                 else:
@@ -233,7 +233,7 @@ def get_lods(fdata, max_lod=16, load_mesh=True, load_mats=False):
                         m.big.shader_name = data.readStr()
                         m.big.values = []
                         value_ct = data.readShort()
-                        for c in xrange(value_ct):
+                        for c in range(value_ct):
                             v = Material.Value()
                             v.name = data.readStr()
                             v_type = data.readShort()
@@ -246,7 +246,7 @@ def get_lods(fdata, max_lod=16, load_mesh=True, load_mats=False):
                             elif v_type == 2:
                                 v.value = data.readFloat()
                             elif 3<=v_type<=5:
-                                v.value = tuple(data.readFloat() for i in xrange(v_type-1))
+                                v.value = tuple(data.readFloat() for i in range(v_type-1))
                             m.big.values.append(v)
                     else:
                         # Small Mat
@@ -259,12 +259,12 @@ def get_lods(fdata, max_lod=16, load_mesh=True, load_mats=False):
 #            print 'INVALID MAT TYPE>', mat_str
             pass
 
-    body_index = fdata.index('BODY')+4
+    body_index = fdata.index(b'BODY')+4
     data = Stream(fdata[body_index: body_index+4])
     mesh_count = min(max_lod, data.readShort())
     lods = []
     start_index = body_index
-    for i0 in xrange(mesh_count):
+    for i0 in range(mesh_count):
         min_ind_idx=100000
         max_ind_idx=-1
         max_tex_idx=0
@@ -272,10 +272,10 @@ def get_lods(fdata, max_lod=16, load_mesh=True, load_mats=False):
         verts=[]
         faces=[]
 
-        verts_start = fdata.index('POIN', start_index) + 4
-        verts_end = fdata.index('/POI', verts_start)
-        face_start = fdata.index('PART', verts_end) + 4
-        face_end = fdata.index('/PAR', face_start)
+        verts_start = fdata.index(b'POIN', start_index) + 4
+        verts_end = fdata.index(b'/POI', verts_start)
+        face_start = fdata.index(b'PART', verts_end) + 4
+        face_end = fdata.index(b'/PAR', face_start)
         start_index = face_end + 4
 
         data = Stream(fdata[verts_start-12: verts_start-4])
@@ -285,10 +285,10 @@ def get_lods(fdata, max_lod=16, load_mesh=True, load_mats=False):
         if load_mesh:
             data = Stream(fdata[verts_start: verts_end])
             vert_ct = data.readInt()
-            for i in xrange(vert_ct):
+            for i in range(vert_ct):
                 flags = data.readShort()
                 if flags & 0x19 != 0x19:
-                    print 'bad vec', i, flags
+                    print ('bad vec', i, flags)
                     continue
                 pos = vec(data.readInt(), data.readInt(), data.readInt())
 
@@ -304,13 +304,13 @@ def get_lods(fdata, max_lod=16, load_mesh=True, load_mats=False):
             data = Stream(fdata[face_start: face_end])
 
             facegroup_ct = data.readInt()
-            for i in xrange(facegroup_ct):
+            for i in range(facegroup_ct):
                 flags = data.readInt()
                 texgroup_ct = data.readShort()
-                for j in xrange(texgroup_ct):
+                for j in range(texgroup_ct):
                     mat_idx = data.readInt()
                     indices_ct = data.readInt()
-                    for k in xrange(indices_ct):
+                    for k in range(indices_ct):
                         f = face(mat_idx, data.readInt()+1, data.readInt()+1, data.readInt()+1)
                         faces.append(f)
                         data.readInt() # ? part of indices
@@ -320,7 +320,7 @@ def get_lods(fdata, max_lod=16, load_mesh=True, load_mats=False):
 
                     if flags & 0x10000000 == 0x10000000:
                         x3_vertex_ct = data.readInt()
-                        for l in xrange(x3_vertex_ct):
+                        for l in range(x3_vertex_ct):
                             point_idx = data.readInt()
                             tangent = vec(data.readFloat(), data.readFloat(), data.readFloat())
                             unknown = vec(data.readFloat(), data.readFloat(), data.readFloat())
@@ -347,20 +347,20 @@ def gen_obj():
         fno = ('obj/%s.obj' % (f)).lower()
 
         if os.path.exists(fno):
-            print 'Exists %d/%d %s' % (i,model_file_count, fno)
+            print ('Exists %d/%d %s' % (i,model_file_count, fno))
             continue
 
-        print 'Processing %d/%d %s' % (i,model_file_count, fn)
+        print ('Processing %d/%d %s' % (i,model_file_count, fn))
         try:
             #export(pfn, fno)
 
-            with open(pfn) as f:
+            with open(pfn, 'rb') as f:
                 lods = get_lods(f.read())
             lods[0].save_obj(fno)
 
-        except Exception, e:
-            print 'Error processing %s\n%s' % (pfn, e)
-            raise
+        except Exception as e:
+            print ('Error processing %s\n%s' % (pfn, e))
+            #raise
 
 
 def gen_thumb(check_exists=True, scenes=None, db=None):
@@ -386,25 +386,25 @@ def gen_thumb(check_exists=True, scenes=None, db=None):
         fno = ('thumb/%s/%s.gif' % (t, f)).lower()
 
         if check_exists and os.path.exists(fno):
-            print 'Exists %d/%d %s' % (i,model_file_count, fno)
+            print ('Exists %d/%d %s' % (i,model_file_count, fno))
             continue
 
-        print 'Processing %d/%d %s' % (i,model_file_count, fn)
+        print ('Processing %d/%d %s' % (i,model_file_count, fn))
         try:
-            with open(pfn) as f:
+            with open(pfn, 'rb') as f:
                 lods = get_lods(f.read(), max_lod=1)
             xt = lods[0].thumb(fno)
             if xt and dbships:
                 for ship in dbships:
                     ship['size'] = size = dict(w=xt[0], h=xt[1], l=xt[2])
                     db.ships.save(ship)
-                    print '\tsetting size: {} to {}\n'.format(ship['_id'], size)
+                    print ('\tsetting size: {} to {}\n'.format(ship['_id'], size))
             else:
-                print 'NO XT'
+                print ('NO XT')
 
-        except Exception, e:
-            print 'Error processing %s\n%s' % (pfn, e)
-            raise
+        except Exception as e:
+            print ('Error processing %s\n%s' % (pfn, e))
+            #raise
 
 
 def get_info(scenes):
@@ -435,20 +435,20 @@ def get_info(scenes):
                     if ship_key in pfn.lower():
                         ship = scene_ships[ship_key]
                         id = scenes.get(ship, '??')
-                        print 'PARTIAL | {:60} | {:20} | {}'.format(pfn, ship, id)
+                        print ('PARTIAL | {:60} | {:20} | {}'.format(pfn, ship, id))
                         found = True
                 if not found:
-                    print "NOT FOUND", scene
+                    print ("NOT FOUND", scene)
             ships.append((65536.0*lods[0].scale/500.0*2, scene, pfn))
-        except Exception, e:
-            print 'X', str(e), pfn
+        except Exception as e:
+            print('X', str(e), pfn)
             pass
 #            print '\tError processing %s\n%s\n' % (pfn, e)
             
 #            raise
 #    for s, f, id in sorted(ships, reverse=True):
 #        print '%9.0fm | %-60s | %s' % (s, f, id)
-    print len(ships)
+    print (len(ships))
 
 
 def get_ship_scenes(db):
@@ -470,10 +470,10 @@ def get_ship_scenes(db):
 
 
 if __name__=='__main__':
-    from pymongo import MongoClient
-    db = MongoClient().x3
+    #from pymongo import MongoClient
+    #db = MongoClient().x3
 
-    scenes = get_ship_scenes(db)
+    #scenes = get_ship_scenes(db)
 #    get_info(scenes)
-    gen_thumb(False, scenes=scenes, db=db)
-    #gen_obj()
+    #gen_thumb(False, scenes=scenes, db=db)
+    gen_obj()
